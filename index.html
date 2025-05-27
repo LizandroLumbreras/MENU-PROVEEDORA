@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menú Principal - La Proveedora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --principal: #e60000;
@@ -45,6 +45,32 @@
       font-size: 26px;
     }
 
+    .top-buttons {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-buttons button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-toggle {
+      background-color: #444;
+      color: white;
+    }
+
+    .logout-btn {
+      background-color: #e60000;
+      color: white;
+    }
+
     .menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -81,30 +107,31 @@
       color: #888;
     }
 
-    .top-buttons {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
+    .tab-content {
+      display: none;
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .top-buttons button {
-      padding: 6px 12px;
-      font-size: 14px;
+    .tab-content iframe {
+      width: 100%;
+      height: 600px;
       border: none;
-      border-radius: 6px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--sombra);
+    }
+
+    .back-btn {
+      margin: 20px 0;
+      display: block;
+      padding: 10px 20px;
+      background-color: var(--principal);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-    }
-
-    .dark-toggle {
-      background-color: #444;
-      color: white;
-    }
-
-    .logout-btn {
-      background-color: #e60000;
-      color: white;
     }
 
     @media (max-width: 600px) {
@@ -128,29 +155,45 @@
     </div>
   </header>
 
-  <div class="menu">
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/">📋 Alta de Clientes</a>
-      <p>Registrar nuevos clientes</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/" target="_blank">👥 Ver Clientes</a>
-      <p>Consultar y editar información</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/"_blank">📦 Entradas Cigarro</a>
-      <p>Entrada y salida de cigarros</p>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO-BGIB-/"_blank">📦 Salidas Cigarro</a>
-      <p>Entrada y salida de cigarros</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank">📄 Inventario Cigarro Sucursales</a>
-      <p>Formulario para toma de inventario</p>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank">📄 Reporte de entradas/Salidas</a>
-      <p>rReporte teorico para inventarios</p>
-    </div>
+  <!-- Menú principal -->
+  <div id="menu" class="menu">
+    <div class="card"><a href="#" onclick="mostrarTab('alta')">📋 Alta de Clientes</a><p>Registrar nuevos clientes</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('ver')">👥 Ver Clientes</a><p>Consultar y editar información</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('entradas')">📦 Entradas Cigarro</a><p>Entrada de cigarros</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('salidas')">📦 Salidas Cigarro</a><p>Salida de cigarros</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('inventario')">📄 Inventario</a><p>Toma de inventario</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('reporte')">📄 Reporte Entradas/Salidas</a><p>Reporte teórico</p></div>
+  </div>
+
+  <!-- Pestañas -->
+  <div id="alta" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/"></iframe>
+  </div>
+
+  <div id="ver" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/"></iframe>
+  </div>
+
+  <div id="entradas" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/"></iframe>
+  </div>
+
+  <div id="salidas" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/SALIDA-CIGARRO-BGIB-/"></iframe>
+  </div>
+
+  <div id="inventario" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe>
+  </div>
+
+  <div id="reporte" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe>
   </div>
 
   <script>
@@ -160,7 +203,22 @@
 
     function cerrarSesion() {
       alert("Sesión cerrada correctamente.");
-      window.close(); // Simulación
+      window.close();
+    }
+
+    function mostrarTab(tabId) {
+      document.getElementById('menu').style.display = 'none';
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById(tabId).style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function regresar() {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById('menu').style.display = 'grid';
+      window.scrollTo(0, 0);
     }
   </script>
 
