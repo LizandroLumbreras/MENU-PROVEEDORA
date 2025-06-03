@@ -162,13 +162,13 @@
     <div class="card"><a href="#" onclick="mostrarTab('entradas')">📦 Entradas Cigarro</a><p>Entrada de cigarros</p></div>
     <div class="card"><a href="#" onclick="mostrarTab('salidas')">📦 Salidas Cigarro</a><p>Salida de cigarros</p></div>
     <div class="card"><a href="#" onclick="mostrarTab('inventario')">📄 Inventario</a><p>Toma de inventario</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('reporte')">📄 Stock Entradas/Salidas</a><p>Reporte teórico</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('monitoreo')">🔍📹 Monitoreo salidas </a><p>tarjetas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('reporte')">🔍 Costeo Merma </a><p>Reporte</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('reporte')">🔍 Costeo Merma</a><p>Reporte</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('reporteES')">📄 Stock Entradas/Salidas</a><p>Reporte teórico</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('monitoreoSalidas')">🔍📹 Monitoreo Salidas</a><p>Tarjetas</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('merma')">💸 Costeo Merma</a><p>Reporte de pérdidas</p></div>
+    <div class="card"><a href="#" onclick="mostrarTab('monitoreoMerma')">📊 Monitoreo Merma</a><p>Registros agrupados</p></div>
   </div>
 
-  <!-- Pestañas -->
+  <!-- Pestañas con iframes -->
   <div id="alta" class="tab-content">
     <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
     <iframe src="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/"></iframe>
@@ -194,20 +194,26 @@
     <iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe>
   </div>
 
-  <div id="reporte" class="tab-content">
+  <div id="reporteES" class="tab-content">
     <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
     <iframe src="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/"></iframe>
   </div>
 
-  <div id="monitoreo" class="tab-content">
+  <div id="monitoreoSalidas" class="tab-content">
     <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
     <iframe src="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/"></iframe>
   </div>
 
-  <div id="reporte" class="tab-content">
+  <div id="merma" class="tab-content">
     <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
     <iframe src="https://lizandrolumbreras.github.io/MERMA-COSTEO/"></iframe>
   </div>
+
+  <div id="monitoreoMerma" class="tab-content">
+    <button class="back-btn" onclick="regresar()">← Volver al Menú</button>
+    <iframe src="https://lizandrolumbreras.github.io/MONITOREO-MERMA/"></iframe>
+  </div>
+
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
