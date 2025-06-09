@@ -3,170 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menú Principal - La Proveedora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --principal: #e60000;
-      --texto: #003366;
-      --fondo: #f5f7fa;
-      --sombra: rgba(0, 0, 0, 0.1);
-      --card-bg: white;
-    }
-    body.dark { --texto: #ffffff; --fondo: #1e1e1e; --card-bg: #2c2c2c; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--fondo);
-      color: var(--texto);
-      transition: background-color 0.3s, color 0.3s;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: var(--card-bg);
-      box-shadow: 0 2px 6px var(--sombra);
-      position: relative;
-    }
-    header img { max-height: 100px; }
-    header h1 { margin: 10px 0 0; font-size: 26px; }
-    .top-buttons {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    .top-buttons button {
-      padding: 6px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .dark-toggle { background-color: #444; color: white; }
-    .logout-btn { background-color: #e60000; color: white; }
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--sombra);
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: scale(1.03); }
-    .card a {
-      text-decoration: none;
-      color: var(--texto);
-      font-weight: bold;
-      font-size: 18px;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .card p { font-size: 14px; color: #888; }
-    .tab-content {
-      display: none;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .tab-content iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px var(--sombra);
-    }
-    .back-btn {
-      margin: 20px 0;
-      display: block;
-      padding: 10px 20px;
-      background-color: var(--principal);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 22px; }
-      .menu { padding: 15px; }
-    }
-  </style>
+  <title>Panel de Herramientas - La Proveedora</title>
+  <script src="https://kit.fontawesome.com/4f3f5a2ef3.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 </head>
-<body>
-  <header>
-    <img src="logo_proveedora.jpg" alt="Logo La Proveedora">
-    <h1>Panel de Herramientas</h1>
-    <div class="top-buttons">
-      <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
-      <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Encabezado -->
+  <header class="bg-white shadow-md p-4 flex items-center justify-between">
+    <img src="logo.png" alt="Logo" class="h-14">
+    <div class="space-x-2">
+      <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">🌙 Modo Oscuro</button>
+      <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">🔒 Cerrar Sesión</button>
     </div>
   </header>
 
-  <div id="menu" class="menu">
-  <div class="card"><a href="#" onclick="mostrarTab('alta')">📝 Alta de Clientes</a><p>Registrar nuevos clientes</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('ver')">📋 Ver Clientes</a><p>Consultar y editar información</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('inventario')">📦 Inventario</a><p>Toma de inventario Sucursales</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('entradaCigarro')">📥 Entradas Cigarro</a><p>Entrada de cigarros</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('salidaCigarro')">📤 Salidas Cigarro</a><p>Salida de cigarros</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('reporteES')">📊 Stock Entradas/Salidas Cigarro</a><p>Reporte teórico</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('reeimpresion')">🧾 Reimpresión Tickets</a><p>Reimpresión</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoSalidas')">📡 Monitoreo E/S Cigarro</a><p>Entradas y salidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('merma')">💸 Costeo Merma</a><p>Reporte de pérdidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoMerma')">📈 Monitoreo Merma</a><p>Registros agrupados</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('entradaDulces')">🍬 Entrada Dulces</a><p>Registro de dulces</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('salidaDulces')">🍭 Salida Dulces</a><p>Salida de dulces</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('stock')">📊 Stock Dulces</a><p>Entradas vs salidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoESdulces')">📡 Monitoreo E/S Dulces</a><p>Visualización en tiempo real</p></div>
-</div>
+  <!-- Título -->
+  <div class="text-center mt-8">
+    <h1 class="text-3xl font-semibold">Panel de Herramientas</h1>
   </div>
 
-  <div id="alta" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/"></iframe></div>
-<div id="ver" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/"></iframe></div>
-<div id="inventario" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe></div>
-<div id="entradaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/"></iframe></div>
-<div id="salidaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/"></iframe></div>
-<div id="reporteES" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/"></iframe></div>
-<div id="monitoreoSalidas" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/"></iframe></div>
-<div id="merma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MERMA-COSTEO/"></iframe></div>
-<div id="monitoreoMerma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-MERMA/"></iframe></div>
-<div id="reeimpresion" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/"></iframe></div>
-<div id="entradaDulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Almacen_Dulces_Entradas/"></iframe></div>
-<div id="salidaDulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Almacen_Dulces_Salidas/"></iframe></div>
-<div id="stock" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Stock_Almacen_Dulces/"></iframe></div>
-<div id="monitoreoESdulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO_E-S_-DULCES/"></iframe></div>
+  <!-- Contenedor de tarjetas -->
+  <div class="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
 
-    <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-    function cerrarSesion() {
-      alert("Sesión cerrada correctamente.");
-      window.close();
-    }
-    function mostrarTab(tabId) {
-      document.getElementById('menu').style.display = 'none';
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-    function regresar() {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById('menu').style.display = 'grid';
-      window.scrollTo(0, 0);
-    }
-  </script>
+    <!-- Tarjetas -->
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-user-plus text-3xl text-blue-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Alta de Clientes</h3>
+      <p class="text-sm text-gray-500">Registrar nuevos clientes</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-users text-3xl text-indigo-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Ver Clientes</h3>
+      <p class="text-sm text-gray-500">Consultar y editar información</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-boxes text-3xl text-yellow-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Inventario</h3>
+      <p class="text-sm text-gray-500">Toma de inventario</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-sign-in-alt text-3xl text-green-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Entradas Cigarro</h3>
+      <p class="text-sm text-gray-500">Entrada de cigarros</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-sign-out-alt text-3xl text-red-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Salidas Cigarro</h3>
+      <p class="text-sm text-gray-500">Salida de cigarros</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-chart-line text-3xl text-purple-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Stock E/S Cigarro</h3>
+      <p class="text-sm text-gray-500">Reporte teórico</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-print text-3xl text-gray-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Reimpresión Tickets</h3>
+      <p class="text-sm text-gray-500">Reimpresión</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-exchange-alt text-3xl text-blue-600 mb-2"></i>
+      <h3 class="font-bold text-lg">Monitoreo E/S</h3>
+      <p class="text-sm text-gray-500">Entradas y salidas</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-money-bill-wave text-3xl text-green-600 mb-2"></i>
+      <h3 class="font-bold text-lg">Costeo Merma</h3>
+      <p class="text-sm text-gray-500">Reporte de pérdidas</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-database text-3xl text-gray-700 mb-2"></i>
+      <h3 class="font-bold text-lg">Monitoreo Merma</h3>
+      <p class="text-sm text-gray-500">Registros agrupados</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-candy-cane text-3xl text-pink-500 mb-2"></i>
+      <h3 class="font-bold text-lg">Entrada Dulces</h3>
+      <p class="text-sm text-gray-500">Registro de dulces</p>
+    </a>
+
+    <a href="#" class="bg-white shadow-md hover:shadow-xl p-6 rounded-xl text-center transition">
+      <i class="fas fa-ice-cream text-3xl text-purple-600 mb-2"></i>
+      <h3 class="font-bold text-lg">Salida Dulces</h3>
+      <p class="text-sm text-gray-500">Salida de dulces</p>
+    </a>
+
+  </div>
+
 </body>
 </html>
-
