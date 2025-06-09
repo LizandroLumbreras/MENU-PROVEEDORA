@@ -3,170 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menú Principal - La Proveedora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Panel Principal - La Proveedora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --principal: #e60000;
-      --texto: #003366;
-      --fondo: #f5f7fa;
-      --sombra: rgba(0, 0, 0, 0.1);
-      --card-bg: white;
-    }
-    body.dark { --texto: #ffffff; --fondo: #1e1e1e; --card-bg: #2c2c2c; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: var(--fondo);
-      color: var(--texto);
-      transition: background-color 0.3s, color 0.3s;
+      background-color: #f4f6f8;
+      color: #333;
     }
     header {
-      text-align: center;
+      background-color: #e60000;
+      color: white;
       padding: 20px;
-      background-color: var(--card-bg);
-      box-shadow: 0 2px 6px var(--sombra);
-      position: relative;
+      text-align: center;
     }
-    header img { max-height: 100px; }
-    header h1 { margin: 10px 0 0; font-size: 26px; }
-    .top-buttons {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
+    header img {
+      max-height: 60px;
     }
-    .top-buttons button {
-      padding: 6px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+    h1 {
+      margin: 10px 0 0;
+      font-size: 24px;
     }
-    .dark-toggle { background-color: #444; color: white; }
-    .logout-btn { background-color: #e60000; color: white; }
-    .menu {
+    .seccion {
+      margin: 40px auto;
+      max-width: 1100px;
+      padding: 0 20px;
+    }
+    .seccion h2 {
+      border-left: 6px solid #e60000;
+      padding-left: 10px;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+    .grupo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
     }
     .card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       padding: 20px;
       text-align: center;
-      box-shadow: 0 4px 12px var(--sombra);
       transition: transform 0.2s;
     }
-    .card:hover { transform: scale(1.03); }
+    .card:hover {
+      transform: translateY(-5px);
+    }
     .card a {
       text-decoration: none;
-      color: var(--texto);
-      font-weight: bold;
+      color: #003366;
+      font-weight: 600;
       font-size: 18px;
-      display: block;
-      margin-bottom: 8px;
     }
-    .card p { font-size: 14px; color: #888; }
-    .tab-content {
-      display: none;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .tab-content iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px var(--sombra);
-    }
-    .back-btn {
-      margin: 20px 0;
-      display: block;
-      padding: 10px 20px;
-      background-color: var(--principal);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
+    .card p {
+      color: #777;
+      font-size: 14px;
     }
     @media (max-width: 600px) {
-      header h1 { font-size: 22px; }
-      .menu { padding: 15px; }
+      .seccion h2 { font-size: 18px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo_proveedora.jpg" alt="Logo La Proveedora">
-    <h1>Panel de Herramientas</h1>
-    <div class="top-buttons">
-      <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
-      <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
-    </div>
+    <img src="logo_proveedora.jpg" alt="Logo">
+    <h1>Panel Principal - La Proveedora</h1>
   </header>
 
-  <div id="menu" class="menu">
-  <div class="card"><a href="#" onclick="mostrarTab('alta')">📝 Alta de Clientes</a><p>Registrar nuevos clientes</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('ver')">📋 Ver Clientes</a><p>Consultar y editar información</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('inventario')">📦 Inventario</a><p>Toma de inventario Sucursales</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('entradaCigarro')">📥 Entradas Cigarro</a><p>Entrada de cigarros</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('salidaCigarro')">📤 Salidas Cigarro</a><p>Salida de cigarros</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('reporteES')">📊 Stock Entradas/Salidas Cigarro</a><p>Reporte teórico</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('reeimpresion')">🧾 Reimpresión Tickets</a><p>Reimpresión</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoSalidas')">📡 Monitoreo E/S Cigarro</a><p>Entradas y salidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('merma')">💸 Costeo Merma</a><p>Reporte de pérdidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoMerma')">📈 Monitoreo Merma</a><p>Registros agrupados</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('entradaDulces')">🍬 Entrada Dulces</a><p>Registro de dulces</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('salidaDulces')">🍭 Salida Dulces</a><p>Salida de dulces</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('stock')">📊 Stock Dulces</a><p>Entradas vs salidas</p></div>
-  <div class="card"><a href="#" onclick="mostrarTab('monitoreoESdulces')">📡 Monitoreo E/S Dulces</a><p>Visualización en tiempo real</p></div>
-</div>
+  <div class="seccion">
+    <h2>👥 Gestión de Clientes</h2>
+    <div class="grupo">
+      <div class="card"><a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/">📝 Alta de Clientes</a><p>Registrar nuevos clientes</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/">📋 Ver Clientes</a><p>Consultar o editar clientes</p></div>
+    </div>
   </div>
 
-  <div id="alta" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/"></iframe></div>
-<div id="ver" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/"></iframe></div>
-<div id="inventario" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe></div>
-<div id="entradaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/"></iframe></div>
-<div id="salidaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/"></iframe></div>
-<div id="reporteES" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/"></iframe></div>
-<div id="monitoreoSalidas" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/"></iframe></div>
-<div id="merma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MERMA-COSTEO/"></iframe></div>
-<div id="monitoreoMerma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-MERMA/"></iframe></div>
-<div id="reeimpresion" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/"></iframe></div>
-<div id="entradaDulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Almacen_Dulces_Entradas/"></iframe></div>
-<div id="salidaDulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Almacen_Dulces_Salidas/"></iframe></div>
-<div id="stock" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/Stock_Almacen_Dulces/"></iframe></div>
-<div id="monitoreoESdulces" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver al Menú</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO_E-S_-DULCES/"></iframe></div>
+  <div class="seccion">
+    <h2>🚬 Almacén Cigarros</h2>
+    <div class="grupo">
+      <div class="card"><a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/">📥 Entrada Cigarros</a><p>Registro de entradas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/">📤 Salida Cigarros</a><p>Registro de salidas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/">📊 Stock Cigarros</a><p>Entradas vs salidas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/">📡 Monitoreo Cigarros</a><p>Tiempo real</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/">🧾 Reimpresión Tickets</a><p>Duplicado de tickets</p></div>
+    </div>
+  </div>
 
-    <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-    function cerrarSesion() {
-      alert("Sesión cerrada correctamente.");
-      window.close();
-    }
-    function mostrarTab(tabId) {
-      document.getElementById('menu').style.display = 'none';
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-    function regresar() {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById('menu').style.display = 'grid';
-      window.scrollTo(0, 0);
-    }
-  </script>
+  <div class="seccion">
+    <h2>🍬 Almacén Dulces</h2>
+    <div class="grupo">
+      <div class="card"><a href="https://lizandrolumbreras.github.io/Almacen_Dulces_Entradas/">📥 Entrada Dulces</a><p>Registro de entradas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/Almacen_Dulces_Salidas/">📤 Salida Dulces</a><p>Registro de salidas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/Stock_Almacen_Dulces/">📊 Stock Dulces</a><p>Entradas vs salidas</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/MONITOREO_E-S_-DULCES/">📡 Monitoreo Dulces</a><p>Visualización en tiempo real</p></div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>📉 Control de Merma</h2>
+    <div class="grupo">
+      <div class="card"><a href="https://lizandrolumbreras.github.io/MERMA-COSTEO/">💸 Costeo Merma</a><p>Registro y costos</p></div>
+      <div class="card"><a href="https://lizandrolumbreras.github.io/MONITOREO-MERMA/">📈 Monitoreo Merma</a><p>Registros agrupados</p></div>
+    </div>
+  </div>
+
 </body>
 </html>
-
