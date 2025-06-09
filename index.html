@@ -3,150 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menú Principal - La Proveedora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --principal: #e60000;
-      --texto: #003366;
-      --fondo: #f5f7fa;
-      --sombra: rgba(0, 0, 0, 0.1);
-      --card-bg: white;
-    }
-    body.dark { --texto: #ffffff; --fondo: #1e1e1e; --card-bg: #2c2c2c; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--fondo);
-      color: var(--texto);
-      transition: background-color 0.3s, color 0.3s;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: var(--card-bg);
-      box-shadow: 0 2px 6px var(--sombra);
-      position: relative;
-    }
-    header img { max-height: 100px; }
-    header h1 { margin: 10px 0 0; font-size: 26px; }
-    .top-buttons {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    .top-buttons button {
-      padding: 6px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .dark-toggle { background-color: #444; color: white; }
-    .logout-btn { background-color: #e60000; color: white; }
-    .menu-section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px 30px;
-    }
-    .menu-section h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      border-bottom: 2px solid var(--principal);
-      color: var(--principal);
-    }
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--sombra);
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: scale(1.03); }
-    .card a {
-      text-decoration: none;
-      color: var(--texto);
-      font-weight: bold;
-      font-size: 18px;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .card p { font-size: 14px; color: #888; }
-    .tab-content {
-      display: none;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .tab-content iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px var(--sombra);
-    }
-    .back-btn, .main-btn {
-      margin: 20px auto;
-      display: block;
-      padding: 10px 20px;
-      background-color: var(--principal);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 22px; }
-      .menu-section { padding: 15px; }
-    }
-  </style>
+  <title>Alta de Cliente - La Proveedora</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <header>
-    <img src="logo_proveedora.jpg" alt="Logo La Proveedora">
-    <h1>Panel de Herramientas</h1>
-    <div class="top-buttons">
-      <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
-      <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
-    </div>
-  </header>
+  <div class="container">
+    <header>
+      <img src="logo_proveedora.jpg" alt="Logo La Proveedora" class="logo" />
+      <h1>Formato de Alta de Clientes</h1>
+    </header>
 
-  <button class="main-btn" onclick="regresar()">⬅️ Regresar al Menú Principal</button>
+    <form id="formularioCliente">
+      <section>
+        <h2>Datos Generales del Cliente</h2>
+        <input type="text" placeholder="Nombre o Razón Social" required />
+        <input type="text" placeholder="RFC" required />
+        <input type="text" placeholder="Calle" required />
+        <input type="text" placeholder="Número" required />
+        <input type="text" placeholder="Colonia" required />
+        <input type="text" placeholder="Código Postal" required />
+        <input type="text" placeholder="Municipio" required />
+        <input type="text" placeholder="Ciudad" required />
+        <input type="text" placeholder="Estado" required />
+        <input type="text" placeholder="Representante Legal" required />
+        <input type="tel" placeholder="Teléfono" required />
+        <input type="email" placeholder="Correo Electrónico" required />
+      </section>
 
-  <!-- contenido agrupado sigue igual -->
+      <section>
+        <h2>Datos de Facturación</h2>
+        <input type="text" placeholder="Uso de CFDI" required />
+        <input type="text" placeholder="Método de Pago" required />
+        <input type="text" placeholder="Forma de Pago" required />
+        <input type="text" placeholder="Direccion de Entrega" required />
+        <input type="text" placeholder="Autorizado para compra 1" required />
+        <input type="text" placeholder="Autorizado para compra 2" required />
+        <input type="text" placeholder="Autorizado para compra 3" required />
+      </section>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-    function cerrarSesion() {
-      alert("Sesión cerrada correctamente.");
-      window.close();
-    }
-    function mostrarTab(tabId) {
-      document.getElementById('menu').style.display = 'none';
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-    function regresar() {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById('menu').style.display = 'grid';
-      window.scrollTo(0, 0);
-    }
-  </script>
+      <section>
+        <h2>Condiciones Comerciales con el Cliente</h2>
+        <input type="text" placeholder="Días de Crédito" />
+        <input type="text" placeholder="Límite de Crédito en pesos" />
+        <input type="text" placeholder="Tipo de Cliente" />
+        <input type="text" placeholder="Forma de Pago" />
+        <input type="text" placeholder="Descuento por Tipo de Cliente" />
+      </section>
+    </form>
+
+    <footer>
+      <p>LA PROVEEDORA S.A. DE C.V</p>
+    </footer>
+  </div>
 </body>
 </html>
+
