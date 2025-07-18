@@ -67,7 +67,32 @@
       background: green;
       color: white;
       cursor: pointer;
-    }
+    }@media print {
+  body {
+    background: white !important;
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
+
+  .resumen {
+    width: 280px !important;
+    max-width: 100%;
+    padding: 10px;
+    margin: auto;
+    color: black;
+    background: white;
+  }
+
+  .resumen * {
+    color: black !important;
+    background: none !important;
+  }
+
+  button {
+    display: none !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -163,6 +188,13 @@
         await db.collection("consecutivos").doc("salidas_zapata").update({
           ultimo: firebase.firestore.FieldValue.increment(1)
         });
+        localStorage.removeItem("carrito");
+localStorage.removeItem("firmaEntrega");
+localStorage.removeItem("firmaRecibe");
+localStorage.removeItem("fecha");
+localStorage.removeItem("entrega");
+localStorage.removeItem("recibe");
+localStorage.removeItem("destino");
 
         window.print(); // Imprimir automáticamente
 
@@ -185,8 +217,8 @@
       await obtenerFolioDesdeFirebase();
 
       document.getElementById('fecha').textContent = localStorage.getItem("resumenFecha") || "Sin fecha";
-      document.getElementById('entrega').textContent = localStorage.getItem("resumenEntrega") || "No asignado";
-      document.getElementById('recibe').textContent = localStorage.getItem("resumenRecibe") || "No asignado";
+      document.getElementById('entrega').textContent = localStorage.getItem("entregantrega") || "No asignado";
+      document.getElementById('recibe').textContent = localStorage.getItem("recibe") || "No asignado";
       document.getElementById('firmaEntrega').src = localStorage.getItem("firmaEntrega") || "";
       document.getElementById('firmaRecibe').src = localStorage.getItem("firmaRecibe") || "";
       document.getElementById('destino').textContent = localStorage.getItem("destino") || "NO DEFINIDO";
