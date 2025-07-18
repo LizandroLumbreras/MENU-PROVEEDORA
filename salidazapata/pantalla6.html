@@ -81,21 +81,21 @@
       background: green;
       color: white;
       cursor: pointer;
-    }@media print {
+    @media print {
   body {
     background: white !important;
-    color: black;
-    margin: 0;
+    color: black !important;
+    margin: 10px 0; /* márgenes arriba y abajo */
     padding: 0;
   }
 
   .resumen {
-    width: 280px !important;
-    max-width: 100%;
-    padding: 10px;
+    width: 280px; /* para impresora 58mm */
     margin: auto;
-    color: black;
+    padding: 5px 10px;
+    font-size: 13px;
     background: white;
+    color: black;
   }
 
   .resumen * {
@@ -103,7 +103,45 @@
     background: none !important;
   }
 
-  button {
+  .resumen h2 {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  ul {
+    padding-left: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .firmas-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .firmas-vertical div {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .firmas-vertical img {
+    width: 90%;
+    max-width: 250px;
+    height: 60px;
+    border: 1px solid #000;
+    border-radius: 4px;
+  }
+
+  button,
+  .no-print {
     display: none !important;
   }
 }
