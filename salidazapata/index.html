@@ -178,15 +178,13 @@ continuar()<!DOCTYPE html>
   const entrega = document.getElementById("entrega").value;
   const recibe = document.getElementById("recibe").value;
   const destino = document.getElementById("destino").value;
-   localStorage.setItem("entrega", entrega);
-localStorage.setItem("recibe", recibe);
-localStorage.setItem("destino", destino);
-
-  if (!entrega || !recibe || !destino) {
+    if (!entrega || !recibe || !destino) {
     alert("Por favor completa todos los campos.");
     return;
   }
-
+   localStorage.setItem("entrega", entrega);
+localStorage.setItem("recibe", recibe);
+localStorage.setItem("destino", destino);
    window.location.href = "pantalla2.html";
 }
 
