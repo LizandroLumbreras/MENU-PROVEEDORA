@@ -222,7 +222,7 @@
     document.addEventListener("DOMContentLoaded", async () => {
       await obtenerFolioDesdeFirebase();
 
-      document.getElementById('fecha').textContent = localStorage.getItem("resumenFecha") || "Sin fecha";
+      document.getElementById('fecha').textContent = localStorage.getItem("fecha") || "Sin fecha";
       document.getElementById('entrega').textContent = localStorage.getItem("entrega") || "No asignado";
       document.getElementById('recibe').textContent = localStorage.getItem("recibe") || "No asignado";
       document.getElementById('firmaEntrega').src = localStorage.getItem("firmaEntrega") || "";
