@@ -5,70 +5,108 @@
   <title>Resumen de Salida</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #00416A, #E4E5E6);
+    color: white;
+    padding: 20px;
+  }
+
+  .resumen {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .firmas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  .firmas div {
+    width: 45%;
+    text-align: center;
+  }
+
+  .firmas img {
+    max-width: 100%;
+    height: 100px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: green;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* 🖨️ Ajustes para impresión térmica */
+  @media print {
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #00416A, #E4E5E6);
-      color: white;
-      padding: 20px;
+      background: white !important;
+      color: black;
+      margin: 0;
+      padding: 0;
     }
 
     .resumen {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
+      width: 280px !important;
+      max-width: 100% !important;
+      padding: 0;
+      margin: 0 auto;
+      background: white !important;
+      color: black;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
+    .resumen * {
+      color: black !important;
+      background: none !important;
     }
 
     .firmas {
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
     }
 
     .firmas div {
-      width: 45%;
-      text-align: center;
+      font-size: 10px;
     }
 
-    .firmas img {
-      max-width: 100%;
-      height: 100px;
-      background: white;
-      border-radius: 5px;
+    button,
+    .no-print {
+      display: none !important;
     }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-    }
-
-    li {
-      margin-bottom: 10px;
-      background: white;
-      color: black;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    button {
-      display: block;
-      margin: 30px auto 0;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: green;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
