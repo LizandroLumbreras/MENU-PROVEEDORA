@@ -223,8 +223,8 @@
       await obtenerFolioDesdeFirebase();
 
       document.getElementById('fecha').textContent = localStorage.getItem("resumenFecha") || "Sin fecha";
-      document.getElementById('entrega').textContent = localStorage.getItem("resumenEntrega") || "No asignado";
-      document.getElementById('recibe').textContent = localStorage.getItem("resumenRecibe") || "No asignado";
+      document.getElementById('entrega').textContent = localStorage.getItem("entrega") || "No asignado";
+      document.getElementById('recibe').textContent = localStorage.getItem("recibe") || "No asignado";
       document.getElementById('firmaEntrega').src = localStorage.getItem("firmaEntrega") || "";
       document.getElementById('firmaRecibe').src = localStorage.getItem("firmaRecibe") || "";
       document.getElementById('destino').textContent = localStorage.getItem("destino") || "NO DEFINIDO";
