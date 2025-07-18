@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+continuar()<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -178,6 +178,9 @@
   const entrega = document.getElementById("entrega").value;
   const recibe = document.getElementById("recibe").value;
   const destino = document.getElementById("destino").value;
+   localStorage.setItem("entrega", entrega);
+localStorage.setItem("recibe", recibe);
+localStorage.setItem("destino", destino);
 
   if (!entrega || !recibe || !destino) {
     alert("Por favor completa todos los campos.");
