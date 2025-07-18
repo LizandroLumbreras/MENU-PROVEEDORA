@@ -11,6 +11,20 @@
       color: white;
       padding: 20px;
     }
+    .firmas-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.firmas-vertical img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  background: white;
+  border-radius: 5px;
+}
 
     .resumen {
       background: rgba(255,255,255,0.1);
@@ -108,16 +122,16 @@
     <h3>🛒 Artículos:</h3>
     <ul id="lista-articulos"></ul>
 
-    <div class="firmas">
-      <div>
-        <p>Firma quien entrega</p>
-        <img id="firmaEntrega" src="" alt="Firma entrega">
-      </div>
-      <div>
-        <p>Firma quien recibe</p>
-        <img id="firmaRecibe" src="" alt="Firma recibe">
-      </div>
-    </div>
+    <div class="firmas-vertical">
+  <div>
+    <p>Firma quien entrega</p>
+    <img id="firmaEntrega" src="" alt="Firma entrega">
+  </div>
+  <div style="margin-top: 30px;">
+    <p>Firma quien recibe</p>
+    <img id="firmaRecibe" src="" alt="Firma recibe">
+  </div>
+</div>
 
     <button onclick="window.print()">🖨️ Imprimir resumen</button>
   </div>
