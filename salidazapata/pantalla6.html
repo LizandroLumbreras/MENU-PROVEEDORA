@@ -235,7 +235,7 @@
 
       try {
 console.log("📤 Guardando en almacenes > Almacen_Zapata > salidas");
-await db.collection("almacenes").doc("Almacen_Zapata").collection("salidas").add(salida);
+const NOMBRE_ALMACEN = "Almacen_Zapata";
         // 🔁 Incrementa folio en Firebase
         await db.collection("consecutivos").doc("salidas_zapata").update({
           ultimo: firebase.firestore.FieldValue.increment(1)
