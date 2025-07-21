@@ -234,7 +234,7 @@
       };
 
       try {
-        await db.collection("almacenes").doc("almacen_zapata").collection("salidas").add(salida);
+        await db.collection("almacenes").doc("Almacen_Zapata").collection("salidas").add(salida);
 
         // 🔁 Incrementa folio en Firebase
         await db.collection("consecutivos").doc("salidas_zapata").update({
