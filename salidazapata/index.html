@@ -158,7 +158,7 @@ continuar()<!DOCTYPE html>
     const db = firebase.firestore();
 
     async function cargarFolio() {
-  const docRef = db.collection("consecutivos").doc("salidas_zapata");
+  const docRef = db.collection("consecutivos").doc("salidas_ALMZAP001");
   const docSnap = await docRef.get();
   let numero = 1;
   if (docSnap.exists) {
