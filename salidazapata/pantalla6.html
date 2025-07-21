@@ -210,62 +210,53 @@
       document.getElementById("folio").textContent = folio;
     }
 
-    async function guardarEnFirebase() {
-      await obtenerFolioDesdeFirebase(); // Asegura folio actualizado
+async function guardarEnFirebase() {
+  await obtenerFolioDesdeFirebase(); // Asegura folio actualizado
 
-      const fecha = localStorage.getItem("fecha") || "";
-      const entrega = localStorage.getItem("entrega") || "";
-      const recibe = localStorage.getItem("recibe") || "";
-      const destino = localStorage.getItem("destino") || "";
-      const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
-      const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
-      const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
+  const fecha = localStorage.getItem("fecha") || "";
+  const entrega = localStorage.getItem("entrega") || "";
+  const recibe = localStorage.getItem("recibe") || "";
+  const destino = localStorage.getItem("destino") || "";
+  const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
+  const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
+  const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
 
-      const salida = {
-        folio,
-        fecha,
-        entrega,
-        recibe,
-        destino,
-        firmaEntrega,
-        firmaRecibe,
-        articulos,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      };
+  const salida = {
+    folio,
+    fecha,
+    entrega,
+    recibe,
+    destino,
+    firmaEntrega,
+    firmaRecibe,
+    articulos,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  };
 
-     try {
-  console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
-  await db.collection("almacenes").doc(NOMBRE_ALMACEN).collection("salidas").add(salida);
+  try {
+    console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
+    await db.collection("almacenes").doc(NOMBRE_ALMACEN).collection("salidas").add(salida);
 
-        const NOMBRE_ALMACEN = "Almacen_Zapata";
-        // 🔁 Incrementa folio en Firebase
-        await db.collection("consecutivos").doc("salidas_zapata").update({
-          ultimo: firebase.firestore.FieldValue.increment(1)
-        });
-        localStorage.removeItem("carrito");
-localStorage.removeItem("firmaEntrega");
-localStorage.removeItem("firmaRecibe");
-localStorage.removeItem("fecha");
-localStorage.removeItem("entrega");
-localStorage.removeItem("recibe");
-localStorage.removeItem("destino");
+    // 🔁 Incrementa folio en Firebase
+    await db.collection("consecutivos").doc("salidas_zapata").update({
+      ultimo: firebase.firestore.FieldValue.increment(1)
+    });
 
-        window.print(); // Imprimir automáticamente
+    // 🧹 Limpieza de localStorage
+    ["carrito", "firmaEntrega", "firmaRecibe", "fecha", "entrega", "recibe", "destino"].forEach(k => localStorage.removeItem(k));
 
-        // ✅ Limpiar datos temporales
-        localStorage.removeItem("carrito");
-        localStorage.removeItem("firmaEntrega");
-        localStorage.removeItem("firmaRecibe");
+    window.print(); // Imprimir automáticamente
 
-        setTimeout(() => {
-          alert("✅ Salida guardada e impresa correctamente.");
-          window.location.href = "./index.html";
-        }, 3000);
-      } catch (error) {
-        console.error("Error al guardar:", error);
-        alert("❌ Error al guardar la salida.");
-      }
-    }
+    setTimeout(() => {
+      alert("✅ Salida guardada e impresa correctamente.");
+      window.location.href = "./index.html";
+    }, 3000);
+
+  } catch (error) {
+    console.error("Error al guardar:", error);
+    alert("❌ Error al guardar la salida.");
+  }
+}
 
     document.addEventListener("DOMContentLoaded", async () => {
       await obtenerFolioDesdeFirebase();
