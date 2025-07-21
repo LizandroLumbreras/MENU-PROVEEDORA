@@ -233,9 +233,11 @@
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       };
 
-      try {
-console.log("📤 Guardando en almacenes > Almacen_Zapata > salidas");
-const NOMBRE_ALMACEN = "Almacen_Zapata";
+     try {
+  console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
+  await db.collection("almacenes").doc(NOMBRE_ALMACEN).collection("salidas").add(salida);
+
+        const NOMBRE_ALMACEN = "Almacen_Zapata";
         // 🔁 Incrementa folio en Firebase
         await db.collection("consecutivos").doc("salidas_zapata").update({
           ultimo: firebase.firestore.FieldValue.increment(1)
