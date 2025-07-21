@@ -12,20 +12,18 @@
       padding: 20px;
     }
     .firmas-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.firmas-vertical img {
-  width: 100%;
-  max-width: 240px;
-  height: auto;
-  background: white;
-  border-radius: 5px;
-}
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .firmas-vertical img {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      background: white;
+      border-radius: 5px;
+    }
     .resumen {
       background: rgba(255,255,255,0.1);
       border-radius: 10px;
@@ -33,36 +31,15 @@
       max-width: 800px;
       margin: auto;
     }
-
     h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-
-    .firmas {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
-    }
-
-    .firmas div {
-      width: 45%;
-      text-align: center;
-    }
-
-    .firmas img {
-      max-width: 100%;
-      height: 100px;
-      background: white;
-      border-radius: 5px;
-    }
-
     ul {
       list-style: none;
       padding: 0;
       margin: 10px 0;
     }
-
     li {
       margin-bottom: 10px;
       background: white;
@@ -70,7 +47,6 @@
       padding: 10px;
       border-radius: 5px;
     }
-
     button {
       display: block;
       margin: 30px auto 0;
@@ -81,70 +57,55 @@
       background: green;
       color: white;
       cursor: pointer;
+    }
+
     @media print {
-  body {
-    background: white !important;
-    color: black !important;
-    margin: 10px 0; /* márgenes arriba y abajo */
-    padding: 0;
-  }
-
-  .resumen {
-    width: 280px; /* para impresora 58mm */
-    margin: auto;
-    padding: 5px 10px;
-    font-size: 13px;
-    background: white;
-    color: black;
-  }
-
-  .resumen * {
-    color: black !important;
-    background: none !important;
-  }
-
-  .resumen h2 {
-    margin-top: 10px;
-    font-size: 15px;
-    text-align: center;
-  }
-
-  ul {
-    padding-left: 10px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .firmas-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 12px;
-  }
-
-  .firmas-vertical div {
-    margin-bottom: 20px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .firmas-vertical img {
-    width: 90%;
-    max-width: 250px;
-    height: 60px;
-    border: 1px solid #000;
-    border-radius: 4px;
-  }
-
-  button,
-  .no-print {
-    display: none !important;
-  }
-}
+      body {
+        background: white !important;
+        color: black !important;
+        margin: 10px 0;
+        padding: 0;
+      }
+      .resumen {
+        width: 280px;
+        margin: auto;
+        padding: 5px 10px;
+        font-size: 13px;
+        background: white;
+        color: black;
+      }
+      .resumen * {
+        color: black !important;
+        background: none !important;
+      }
+      .resumen h2 {
+        margin-top: 10px;
+        font-size: 15px;
+        text-align: center;
+      }
+      ul {
+        padding-left: 10px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .firmas-vertical {
+        margin-top: 20px;
+        font-size: 12px;
+      }
+      .firmas-vertical img {
+        width: 90%;
+        max-width: 250px;
+        height: 60px;
+        border: 1px solid #000;
+        border-radius: 4px;
+      }
+      button,
+      .no-print {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -161,15 +122,15 @@
     <ul id="lista-articulos"></ul>
 
     <div class="firmas-vertical">
-  <div>
-    <p>Firma quien entrega</p>
-    <img id="firmaEntrega" src="" alt="Firma entrega">
-  </div>
-  <div style="margin-top: 30px;">
-    <p>Firma quien recibe</p>
-    <img id="firmaRecibe" src="" alt="Firma recibe">
-  </div>
-</div>
+      <div>
+        <p>Firma quien entrega</p>
+        <img id="firmaEntrega" src="" alt="Firma entrega">
+      </div>
+      <div style="margin-top: 30px;">
+        <p>Firma quien recibe</p>
+        <img id="firmaRecibe" src="" alt="Firma recibe">
+      </div>
+    </div>
 
     <button onclick="window.print()">🖨️ Imprimir resumen</button>
   </div>
@@ -193,8 +154,8 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-const NOMBRE_ALMACEN = "Almacen_Zapata";
 
+    const NOMBRE_ALMACEN = "Almacen_Zapata";
     let folio = "";
     let numeroFolio = 0;
 
@@ -211,66 +172,58 @@ const NOMBRE_ALMACEN = "Almacen_Zapata";
       document.getElementById("folio").textContent = folio;
     }
 
-async function guardarEnFirebase() {
-  await obtenerFolioDesdeFirebase(); // Asegura folio actualizado
+    async function guardarEnFirebase() {
+      await obtenerFolioDesdeFirebase();
 
-  const fecha = localStorage.getItem("fecha") || "";
-  const entrega = localStorage.getItem("entrega") || "";
-  const recibe = localStorage.getItem("recibe") || "";
-  const destino = localStorage.getItem("destino") || "";
-  const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
-  const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
-  const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
+      const fecha = localStorage.getItem("fecha") || "";
+      const entrega = localStorage.getItem("entrega") || "";
+      const recibe = localStorage.getItem("recibe") || "";
+      const destino = localStorage.getItem("destino") || "";
+      const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
+      const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
+      const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  const salida = {
-    folio,
-    fecha,
-    entrega,
-    recibe,
-    destino,
-    firmaEntrega,
-    firmaRecibe,
-    articulos,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  };
+      const salida = {
+        folio,
+        fecha,
+        entrega,
+        recibe,
+        destino,
+        firmaEntrega,
+        firmaRecibe,
+        articulos,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      };
 
-  try {
-  console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
+      try {
+        console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
 
-// ✅ Código corregido – usar el ID exacto con mayúsculas
-const NOMBRE_ALMACEN = "Almacen_Zapata";  // Coincide con Firestore
-…
-db.collection("almacenes")
-  .doc(NOMBRE_ALMACEN)      // <- Ahora usa "Almacen_Zapata"
-  .collection("salidas")
-  .add(salida);
+        const docRef = await db
+          .collection("almacenes")
+          .doc(NOMBRE_ALMACEN)
+          .collection("salidas")
+          .add(salida);
 
-  console.log(`✅ Salida guardada en: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
-  alert(`✅ Salida guardada exitosamente.\nUbicación: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
+        console.log(`✅ Salida guardada en: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
+        alert(`✅ Salida guardada exitosamente.\nUbicación: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
 
-  // 🔁 Incrementa folio
-  await db.collection("consecutivos").doc("salidas_zapata").update({
-    ultimo: firebase.firestore.FieldValue.increment(1)
-  });
+        await db.collection("consecutivos").doc("salidas_zapata").update({
+          ultimo: firebase.firestore.FieldValue.increment(1)
+        });
 
-  // Limpia localStorage
-  ["carrito", "firmaEntrega", "firmaRecibe", "fecha", "entrega", "recibe", "destino"].forEach(k => localStorage.removeItem(k));
+        ["carrito", "firmaEntrega", "firmaRecibe", "fecha", "entrega", "recibe", "destino"].forEach(k => localStorage.removeItem(k));
 
-  window.print();
+        window.print();
+        setTimeout(() => window.location.href = "./index.html", 3000);
 
-  setTimeout(() => {
-    window.location.href = "./index.html";
-  }, 3000);
-
-} catch (error) {
-  console.error("❌ Error al guardar:", error);
-  alert("❌ Error al guardar la salida.");
-}
-}
+      } catch (error) {
+        console.error("❌ Error al guardar:", error);
+        alert("❌ Error al guardar la salida.");
+      }
+    }
 
     document.addEventListener("DOMContentLoaded", async () => {
       await obtenerFolioDesdeFirebase();
-
       document.getElementById('fecha').textContent = localStorage.getItem("resumenFecha") || "Sin fecha";
       document.getElementById('entrega').textContent = localStorage.getItem("entrega") || "No asignado";
       document.getElementById('recibe').textContent = localStorage.getItem("recibe") || "No asignado";
@@ -287,11 +240,11 @@ db.collection("almacenes")
       });
     });
   </script>
+
   <footer style="margin-top: 40px; text-align: center; color: #ccc; font-size: 14px;">
     <hr style="border-color: #555; width: 80%;">
     <p>📦 Sistema de Almacén Zapata</p>
     <p>&copy; 2025 InventarioPV · Todos los derechos reservados</p>
   </footer>
-
 </body>
 </html>
