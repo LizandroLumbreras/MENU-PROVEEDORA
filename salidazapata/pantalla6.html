@@ -212,7 +212,7 @@ async function guardarEnFirebase() {
 
   try {
     const docRef = await almacenRef.collection("salidas").add(salida);
-    alert(`✅ Salida guardada correctamente en:\nalmacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
+    alert(`✅ Documento creado correctamente en:\nalmacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
 
     await db.collection("consecutivos").doc("salidas_zapata").update({
       ultimo: firebase.firestore.FieldValue.increment(1)
