@@ -139,7 +139,6 @@
     💾 Guardar salida
   </button>
 
-  <!-- ✅ Footer visible justo debajo -->
   <footer style="margin-top: 20px; text-align: center; color: #ccc; font-size: 14px;">
     <hr style="border-color: #555; width: 80%;">
     <p>📦 Sistema de Almacén Zapata</p>
@@ -150,7 +149,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <script>
-    // Configuración de Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCK5nb6u2CGRJ8AB1aPlRn54b97bdeAFeM",
       authDomain: "inventariopv-643f1.firebaseapp.com",
@@ -162,7 +160,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    const NOMBRE_ALMACEN = "Almacen_Zapata";
+    const NOMBRE_ALMACEN = "Almacen_Zapata"; // 💡 Fijado aquí manualmente
     let folio = "";
     let numeroFolio = 0;
 
@@ -181,6 +179,14 @@
 
     async function guardarEnFirebase() {
       await obtenerFolioDesdeFirebase();
+
+      // Verifica que el almacén exista
+      const almacenRef = db.collection("almacenes").doc(NOMBRE_ALMACEN);
+      const almacenSnap = await almacenRef.get();
+      if (!almacenSnap.exists) {
+        alert(`❌ El almacén "${NOMBRE_ALMACEN}" no existe en Firebase.`);
+        throw new Error(`El almacén "${NOMBRE_ALMACEN}" no existe`);
+      }
 
       const fecha = localStorage.getItem("fecha") || "";
       const entrega = localStorage.getItem("entrega") || "";
@@ -203,16 +209,8 @@
       };
 
       try {
-        console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
-
-        const docRef = await db
-          .collection("almacenes")
-          .doc(NOMBRE_ALMACEN)
-          .collection("salidas")
-          .add(salida);
-
-        console.log(`✅ Salida guardada en: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
-        alert(`✅ Salida guardada exitosamente.\nUbicación: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
+        const docRef = await almacenRef.collection("salidas").add(salida);
+        alert(`✅ Salida guardada en: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
 
         await db.collection("consecutivos").doc("salidas_zapata").update({
           ultimo: firebase.firestore.FieldValue.increment(1)
