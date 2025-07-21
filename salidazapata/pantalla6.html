@@ -58,20 +58,20 @@
       color: white;
       cursor: pointer;
     }
-footer {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 180px;
-  transform: rotate(-90deg) translate(50%, 0);
-  transform-origin: right center;
-  background: #00416A;
-  color: white;
-  font-size: 14px;
-  padding: 8px;
-  border-radius: 8px 0 0 8px;
-  z-index: 9999;
-}
+    footer {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      width: 180px;
+      transform: rotate(-90deg) translate(50%, 0);
+      transform-origin: right center;
+      background: #00416A;
+      color: white;
+      font-size: 14px;
+      padding: 8px;
+      border-radius: 8px 0 0 8px;
+      z-index: 9999;
+    }
 
     @media print {
       body {
@@ -120,7 +120,6 @@ footer {
         display: none !important;
       }
     }
-
   </style>
 </head>
 <body>
@@ -153,8 +152,7 @@ footer {
     💾 Guardar salida
   </button>
 
-  <footer style="margin-top: 20px; text-align: center; color: #ccc; font-size: 14px;">
-    <hr style="border-color: #555; width: 80%;">
+  <footer>
     <p>📦 Sistema de Almacén Zapata</p>
     <p>&copy; 2025 InventarioPV · Todos los derechos reservados</p>
   </footer>
@@ -174,12 +172,12 @@ footer {
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    const NOMBRE_ALMACEN = "Almacen_Zapata"; // 💡 Fijado aquí manualmente
+    const NOMBRE_ALMACEN = "ALMZAP001"; // ✅ NUEVO almacén
     let folio = "";
     let numeroFolio = 0;
 
     async function obtenerFolioDesdeFirebase() {
-      const ref = db.collection("consecutivos").doc("salidas_zapata");
+      const ref = db.collection("consecutivos").doc("salidas_ALMZAP001"); // ✅ NUEVO ID de consecutivo
       const snap = await ref.get();
       if (snap.exists) {
         numeroFolio = snap.data().ultimo || 1;
@@ -191,62 +189,57 @@ footer {
       document.getElementById("folio").textContent = folio;
     }
 
-async function guardarEnFirebase() {
-  await obtenerFolioDesdeFirebase();
+    async function guardarEnFirebase() {
+      await obtenerFolioDesdeFirebase();
 
-  const almacenRef = db.collection("almacenes").doc(NOMBRE_ALMACEN);
-  const almacenSnap = await almacenRef.get();
-  const existeAlmacen = almacenSnap.exists;
+      const almacenRef = db.collection("almacenes").doc(NOMBRE_ALMACEN);
+      const almacenSnap = await almacenRef.get();
+      const existeAlmacen = almacenSnap.exists;
 
-  if (!existeAlmacen) {
-    alert(`❌ Error: El almacén "${NOMBRE_ALMACEN}" no existe. No se guardó nada.`);
-    console.error(`❌ El almacén "${NOMBRE_ALMACEN}" no existe en Firestore.`);
-    return;
-  }
+      if (!existeAlmacen) {
+        alert(`❌ Error: El almacén "${NOMBRE_ALMACEN}" no existe. No se guardó nada.`);
+        console.error(`❌ El almacén "${NOMBRE_ALMACEN}" no existe en Firestore.`);
+        return;
+      }
 
-  const fecha = localStorage.getItem("fecha") || "";
-  const entrega = localStorage.getItem("entrega") || "";
-  const recibe = localStorage.getItem("recibe") || "";
-  const destino = localStorage.getItem("destino") || "";
-  const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
-  const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
-  const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
+      const fecha = localStorage.getItem("fecha") || "";
+      const entrega = localStorage.getItem("entrega") || "";
+      const recibe = localStorage.getItem("recibe") || "";
+      const destino = localStorage.getItem("destino") || "";
+      const firmaEntrega = localStorage.getItem("firmaEntrega") || "";
+      const firmaRecibe = localStorage.getItem("firmaRecibe") || "";
+      const articulos = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  const salida = {
-    folio,
-    fecha,
-    entrega,
-    recibe,
-    destino,
-    firmaEntrega,
-    firmaRecibe,
-    articulos,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  };
+      const salida = {
+        folio,
+        fecha,
+        entrega,
+        recibe,
+        destino,
+        firmaEntrega,
+        firmaRecibe,
+        articulos,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      };
 
-  try {
-    // Validación estricta justo antes del guardado
-    if (!existeAlmacen) {
-      throw new Error("⛔ Intento de guardar en un almacén inexistente.");
+      try {
+        const docRef = await almacenRef.collection("salidas").add(salida);
+        alert(`✅ Documento creado correctamente en:\nalmacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
+
+        await db.collection("consecutivos").doc("salidas_ALMZAP001").update({
+          ultimo: firebase.firestore.FieldValue.increment(1)
+        });
+
+        ["carrito", "firmaEntrega", "firmaRecibe", "fecha", "entrega", "recibe", "destino"].forEach(k => localStorage.removeItem(k));
+
+        window.print();
+        setTimeout(() => window.location.href = "./index.html", 3000);
+
+      } catch (error) {
+        console.error("❌ Error al guardar la salida:", error);
+        alert("❌ Error al guardar la salida.");
+      }
     }
-
-    const docRef = await almacenRef.collection("salidas").add(salida);
-    alert(`✅ Documento creado correctamente en:\nalmacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
-
-    await db.collection("consecutivos").doc("salidas_zapata").update({
-      ultimo: firebase.firestore.FieldValue.increment(1)
-    });
-
-    ["carrito", "firmaEntrega", "firmaRecibe", "fecha", "entrega", "recibe", "destino"].forEach(k => localStorage.removeItem(k));
-
-    window.print();
-    setTimeout(() => window.location.href = "./index.html", 3000);
-
-  } catch (error) {
-    console.error("❌ Error al guardar la salida:", error);
-    alert("❌ Error al guardar la salida.");
-  }
-}
 
     document.addEventListener("DOMContentLoaded", async () => {
       await obtenerFolioDesdeFirebase();
