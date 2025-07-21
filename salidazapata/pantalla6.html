@@ -58,6 +58,20 @@
       color: white;
       cursor: pointer;
     }
+footer {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 180px;
+  transform: rotate(-90deg) translate(50%, 0);
+  transform-origin: right center;
+  background: #00416A;
+  color: white;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px 0 0 8px;
+  z-index: 9999;
+}
 
     @media print {
       body {
@@ -105,26 +119,11 @@
       .no-print {
         display: none !important;
       }
-   footer {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 180px;
-  transform: rotate(-90deg) translate(50%, 0);
-  transform-origin: right center;
-  background: #00416A;
-  color: white;
-  font-size: 14px;
-  padding: 8px;
-  border-radius: 8px 0 0 8px;
-}
-
-
     }
+
   </style>
 </head>
 <body>
-
   <div class="resumen">
     <h2>📋 Resumen de salida</h2>
     <p><strong>Folio:</strong> <span id="folio">Cargando...</span></p>
