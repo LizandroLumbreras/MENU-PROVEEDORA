@@ -105,6 +105,21 @@
       .no-print {
         display: none !important;
       }
+   footer {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 180px;
+  transform: rotate(-90deg) translate(50%, 0);
+  transform-origin: right center;
+  background: #00416A;
+  color: white;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px 0 0 8px;
+}
+
+
     }
   </style>
 </head>
@@ -180,14 +195,14 @@
 async function guardarEnFirebase() {
   await obtenerFolioDesdeFirebase();
 
-  // Verifica que el almacén exista
   const almacenRef = db.collection("almacenes").doc(NOMBRE_ALMACEN);
   const almacenSnap = await almacenRef.get();
+  const existeAlmacen = almacenSnap.exists;
 
-  if (!almacenSnap.exists) {
+  if (!existeAlmacen) {
     alert(`❌ Error: El almacén "${NOMBRE_ALMACEN}" no existe. No se guardó nada.`);
     console.error(`❌ El almacén "${NOMBRE_ALMACEN}" no existe en Firestore.`);
-    return; // ⛔ Detiene todo
+    return;
   }
 
   const fecha = localStorage.getItem("fecha") || "";
@@ -211,6 +226,11 @@ async function guardarEnFirebase() {
   };
 
   try {
+    // Validación estricta justo antes del guardado
+    if (!existeAlmacen) {
+      throw new Error("⛔ Intento de guardar en un almacén inexistente.");
+    }
+
     const docRef = await almacenRef.collection("salidas").add(salida);
     alert(`✅ Documento creado correctamente en:\nalmacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
 
