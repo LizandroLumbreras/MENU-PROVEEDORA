@@ -237,10 +237,13 @@ async function guardarEnFirebase() {
   try {
   console.log(`📤 Guardando en almacenes > ${NOMBRE_ALMACEN} > salidas`);
 
-  const docRef = await db.collection("almacenes")
-    .doc(NOMBRE_ALMACEN)
-    .collection("salidas")
-    .add(salida);
+// ✅ Código corregido – usar el ID exacto con mayúsculas
+const NOMBRE_ALMACEN = "Almacen_Zapata";  // Coincide con Firestore
+…
+db.collection("almacenes")
+  .doc(NOMBRE_ALMACEN)      // <- Ahora usa "Almacen_Zapata"
+  .collection("salidas")
+  .add(salida);
 
   console.log(`✅ Salida guardada en: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
   alert(`✅ Salida guardada exitosamente.\nUbicación: almacenes/${NOMBRE_ALMACEN}/salidas/${docRef.id}`);
