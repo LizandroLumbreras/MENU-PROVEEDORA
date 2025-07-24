@@ -8,29 +8,40 @@
   <style>
     :root {
       --principal: #e60000;
-      --texto: #003366;
-      --fondo: #f5f7fa;
+      --texto: white;
+      --fondo: linear-gradient(to right, #00416A, #E4E5E6);
       --sombra: rgba(0, 0, 0, 0.1);
-      --card-bg: white;
-    }
-    body.dark {
-      --texto: #ffffff;
-      --fondo: #1e1e1e;
-      --card-bg: #2c2c2c;
+      --card-bg: rgba(255, 255, 255, 0.15);
     }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: var(--fondo);
+      background: var(--fondo);
       color: var(--texto);
-      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+      position: relative;
+      box-sizing: border-box;
     }
+
+    .marca-agua {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.08;
+      z-index: 0;
+      max-width: 80%;
+      height: auto;
+      pointer-events: none;
+    }
+
     header {
       text-align: center;
       padding: 20px;
-      background-color: var(--card-bg);
+      background-color: rgba(255,255,255,0.1);
       box-shadow: 0 2px 6px var(--sombra);
       position: relative;
+      z-index: 2;
     }
     header img {
       max-height: 100px;
@@ -65,6 +76,8 @@
       padding: 30px;
       max-width: 1000px;
       margin: auto;
+      z-index: 2;
+      position: relative;
     }
     section {
       display: grid;
@@ -87,7 +100,7 @@
     }
     .card a {
       text-decoration: none;
-      color: var(--texto);
+      color: white;
       font-weight: bold;
       font-size: 18px;
       display: block;
@@ -95,13 +108,15 @@
     }
     .card p {
       font-size: 14px;
-      color: #888;
+      color: #f0f0f0;
     }
     .tab-content {
       display: none;
       padding: 30px;
       max-width: 1000px;
       margin: auto;
+      position: relative;
+      z-index: 2;
     }
     .tab-content iframe {
       width: 100%;
@@ -132,6 +147,8 @@
   </style>
 </head>
 <body>
+  <img src="logo_proveedora.png" class="marca-agua" alt="Marca de agua" />
+
   <header>
     <img src="logo_proveedora.jpg" alt="Logo La Proveedora">
     <h1>Panel de Herramientas</h1>
@@ -140,7 +157,6 @@
       <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
     </div>
   </header>
-
   <div id="menu" class="menu">
   <!-- CLIENTES -->
   <section>
@@ -227,4 +243,3 @@
   </script>
 </body>
 </html>
-
