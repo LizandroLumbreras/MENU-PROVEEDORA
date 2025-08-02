@@ -110,32 +110,6 @@
       font-size: 13px;
       color: #f0f0f0;
     }
-    .tab-content {
-      display: none;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
-    .tab-content iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px var(--sombra);
-    }
-    .back-btn {
-      margin: 20px 0;
-      display: block;
-      padding: 10px 20px;
-      background-color: var(--principal);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
     @media (max-width: 600px) {
       header h1 {
         font-size: 20px;
@@ -174,70 +148,86 @@
       <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
     </div>
   </header>
-  <div id="menu" class="menu">
-  <!-- CLIENTES -->
-  <section>
-    <div class="card"><a href="#" onclick="mostrarTab('formulariodeClientes')">📝 Formulario de Clientes</a><p>Formato de clientes</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('verClientes')">📋 Ver Clientes</a><p>Consultar y editar información</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('agregarClientes')">📝 Agregar Clientes</a><p>Consultar y editar clientes</p></div>
-  </section>
-
-  <!-- CIGARRO -->
-  <section>
-    <div class="card"><a href="#" onclick="mostrarTab('controlCigarro')">🧭 Control Cigarro</a><p>Panel principal</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('inventarioCigarro')">📦 Inventario</a><p>Inventario físico</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('entradaCigarro')">📥 Entradas</a><p>Registro de entradas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('salidaCigarro')">📤 Salidas</a><p>Registro de salidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('reporteCigarro')">📊 Stock Teórico</a><p>Entradas y salidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('monitoreoCigarro')">📡 Monitoreo</a><p>Entradas y salidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('existenciaCigarro')">📑 Existencia</a><p>Inventario actual</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('reimpresionTickets')">🧾 Reimpresión</a><p>Tickets de salidas</p></div>
-  </section>
-
-  <!-- ZAPATA -->
-  <section>
-    <div class="card"><a href="#" onclick="mostrarTab('entradaZapata')">📥 Entrada</a><p>Entradas normales</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('ajusteZapata')">🛠️ Entrada por Ajuste</a><p>Ajustes manuales</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('salidaZapata')">📤 Salida</a><p>Registro de salidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('inventarioZapata')">📦 Inventario</a><p>Stock actual</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('monitoreoZapata')">📡 Monitoreo</a><p>Entradas y salidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('agregarProductos')">➕ Agregar Productos</a><p>Nuevos códigos</p></div>
-  </section>
-
-  <!-- MERMA -->
-  <section>
-    <div class="card"><a href="#" onclick="mostrarTab('merma')">💸 Costeo Merma</a><p>Captura de pérdidas</p></div>
-    <div class="card"><a href="#" onclick="mostrarTab('monitoreoMerma')">📈 Monitoreo Merma</a><p>Historial agrupado</p></div>
-  </section>
-</div>
-  
-  <!-- CLIENTES -->
-<div id="formatoClientes" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/FORMULARIO--CIENTES-PROVTEC25/"></iframe></div>
-<div id="verClientes" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/"></iframe></div>
-<div id="agregarClientes" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/"></iframe></div>
-
+  <div id="menu" class="menu"> 
+ <!-- CLIENTES -->
+<section>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/FORMULARIO--CIENTES-PROVTEC25/" target="_blank" rel="noopener">📝 Formulario de Clientes</a>
+    <p>Formato de clientes</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/" target="_blank" rel="noopener">📋 Ver Clientes</a>
+    <p>Consultar y editar información</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/" target="_blank" rel="noopener">📝 Agregar Clientes</a>
+    <p>Registro rápido de nuevos clientes</p>
+  </div>
+</section>
 
 <!-- CIGARRO -->
-<div id="controlCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/"></iframe></div>
-<div id="inventarioCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/"></iframe></div>
-<div id="entradaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/"></iframe></div>
-<div id="salidaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/"></iframe></div>
-<div id="reporteCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/"></iframe></div>
-<div id="monitoreoCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/"></iframe></div>
-<div id="existenciaCigarro" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/"></iframe></div>
-<div id="reimpresionTickets" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/"></iframe></div>
+<section>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/" target="_blank" rel="noopener">🧭 Control Cigarro</a>
+    <p>Panel principal</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank" rel="noopener">📦 Inventario</a>
+    <p>Inventario físico</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/" target="_blank" rel="noopener">📥 Entradas</a>
+    <p>Registro de entradas</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/" target="_blank" rel="noopener">📤 Salidas</a>
+    <p>Registro de salidas</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/" target="_blank" rel="noopener">📊 Stock Teórico</a>
+    <p>Entradas y salidas</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/" target="_blank" rel="noopener">📡 Monitoreo</a>
+    <p>Entradas y salidas</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/" target="_blank" rel="noopener">📑 Existencia</a>
+    <p>Inventario actual</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/" target="_blank" rel="noopener">🧾 Reimpresión</a>
+    <p>Tickets de salidas</p>
+  </div>
+</section>
 
 <!-- ZAPATA -->
-<div id="entradaZapata" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/Entrada-Zapata/"></iframe></div>
-<div id="ajusteZapata" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/ENTRADA-POR-AJUSTE-ZAPATA/"></iframe></div>
-<div id="salidaZapata" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/"></iframe></div>
-<div id="inventarioZapata" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/"></iframe></div>
-<div id="monitoreoZapata" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/Monitoreo-Zapata/"></iframe></div>
-<div id="agregarProductos" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/"></iframe></div>
+<section>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/Entrada-Zapata/" target="_blank" rel="noopener">📥 Entrada</a>
+    <p>Entradas normales</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/ENTRADA-POR-AJUSTE-ZAPATA/" target="_blank" rel="noopener">🛠️ Entrada por Ajuste</a>
+    <p>Ajustes manuales</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/" target="_blank" rel="noopener">📤 Salida</a>
+    <p>Registro de salidas</p>
+  </div>
+</section>
 
 <!-- MERMA -->
-<div id="merma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/MERMA-COSTEO/"></iframe></div>
-<div id="monitoreoMerma" class="tab-content"><button class="back-btn" onclick="regresar()">← Volver</button><iframe src="https://lizandrolumbreras.github.io/MONITOREO-MERMA/"></iframe></div>
+<section>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/MERMA-COSTEO/" target="_blank" rel="noopener">💸 Costeo Merma</a>
+    <p>Captura de pérdidas</p>
+  </div>
+  <div class="card">
+    <a href="https://lizandrolumbreras.github.io/MONITOREO-MERMA/" target="_blank" rel="noopener">📈 Monitoreo Merma</a>
+    <p>Historial agrupado</p>
+  </div>
+</section>
 
    <script>
     function toggleDarkMode() {
@@ -246,19 +236,6 @@
     function cerrarSesion() {
       alert("Sesión cerrada correctamente.");
       window.close();
-    }
-    function mostrarTab(tabId) {
-      document.getElementById('menu').style.display = 'none';
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.style.display = 'none');
-      const tab = document.getElementById(tabId);
-      if (tab) tab.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function regresar() {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-      document.getElementById('menu').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
     <footer>
