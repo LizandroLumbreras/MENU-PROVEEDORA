@@ -1,4 +1,76 @@
---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú Principal - La Proveedora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --principal: #e60000;
+      --texto: white;
+      --fondo: linear-gradient(to right, #00416A, #E4E5E6);
+      --sombra: rgba(0, 0, 0, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 80px;
+    }
+
+    /* Marca de agua con cristal y brillo */
+    .marca-agua {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fondo-cristal {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px) saturate(130%) contrast(110%);
+      -webkit-backdrop-filter: blur(8px) saturate(130%) contrast(110%);
+    }
+
+    .logo-visible {
+      max-width: 1000px;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    .shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg,
+        transparent 0%,
+        rgba(255,255,255, 0.2) 40%,
+        rgba(255,255,255, 0.6) 50%,
+        rgba(255,255,255, 0.2) 60%,
+        transparent 100%);
+      transform: translateX(-120%) skewX(-12deg);
+      animation: shine-move 6s ease-in-out infinite;
+      filter: blur(1px);
+      z-index: 2;
+    }
+
+    @keyframes shine-move {
+      0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+      8% { opacity: 1; }
       16% { transform: translateX(120%) skewX(-12deg); opacity: 1; }
       18% { opacity: 0; }
       100% { transform: translateX(120%) skewX(-12deg); opacity: 0; }
