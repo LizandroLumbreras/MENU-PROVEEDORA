@@ -10,46 +10,90 @@
       --principal: #e60000;
       --texto: white;
       --fondo: linear-gradient(to right, #00416A, #E4E5E6);
-      --sombra: rgba(0, 0, 0, 0.1);
-      --card-bg: rgba(255, 255, 255, 0.15);
+      --sombra: rgba(0, 0, 0, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.05);
     }
+
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Poppins', sans-serif;
       background: var(--fondo);
       color: var(--texto);
       min-height: 100vh;
+      position: relative;
+      padding-bottom: 80px;
     }
+
+    /* Marca de agua con cristal y brillo */
     .marca-agua {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.08;
+      inset: 0;
+      display: grid;
+      place-items: center;
       z-index: 0;
-      max-width: 80%;
-      height: auto;
       pointer-events: none;
     }
+
+    .fondo-cristal {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px) saturate(130%) contrast(110%);
+      -webkit-backdrop-filter: blur(8px) saturate(130%) contrast(110%);
+    }
+
+    .logo-visible {
+      max-width: 600px;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    .shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg,
+        transparent 0%,
+        rgba(255,255,255, 0.2) 40%,
+        rgba(255,255,255, 0.6) 50%,
+        rgba(255,255,255, 0.2) 60%,
+        transparent 100%);
+      transform: translateX(-120%) skewX(-12deg);
+      animation: shine-move 6s ease-in-out infinite;
+      filter: blur(1px);
+      z-index: 2;
+    }
+
+    @keyframes shine-move {
+      0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+      8% { opacity: 1; }
+      16% { transform: translateX(120%) skewX(-12deg); opacity: 1; }
+      18% { opacity: 0; }
+      100% { transform: translateX(120%) skewX(-12deg); opacity: 0; }
+    }
+
     header {
       text-align: center;
       padding: 20px;
-      background-color: rgba(255,255,255,0.1);
+      background-color: rgba(255,255,255,0.08);
       box-shadow: 0 2px 6px var(--sombra);
       position: relative;
       z-index: 2;
     }
+
     header img {
       max-height: 120px;
-      height: auto;
     }
+
     header h1 {
       margin: 10px 0 0;
       font-size: 24px;
     }
+
     .top-buttons {
       position: absolute;
       top: 10px;
@@ -57,6 +101,7 @@
       display: flex;
       gap: 10px;
     }
+
     .top-buttons button {
       padding: 6px 12px;
       font-size: 14px;
@@ -64,40 +109,44 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
     .dark-toggle {
       background-color: #444;
       color: white;
     }
+
     .logout-btn {
       background-color: #e60000;
       color: white;
     }
-    .menu {
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       padding: 30px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
       z-index: 2;
       position: relative;
     }
-    section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 30px;
-      border-bottom: 1px dashed #ccc;
-      padding-bottom: 16px;
-    }
+
     .card {
       background-color: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 10px;
       padding: 16px;
       text-align: center;
-      box-shadow: 0 2px 8px var(--sombra);
-      transition: transform 0.2s;
+      box-shadow: 0 4px 12px var(--sombra);
+      transition: transform 0.2s, background 0.3s ease;
     }
+
     .card:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
+      background-color: rgba(255, 255, 255, 0.10);
     }
+
     .card a {
       text-decoration: none;
       color: white;
@@ -106,87 +155,57 @@
       display: block;
       margin-bottom: 6px;
     }
+
     .card p {
       font-size: 13px;
       color: #f0f0f0;
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 20px;
-      }
-      .menu {
-        padding: 15px;
-      }
-      .card a {
-        font-size: 15px;
-      }
-    }
-      footer {
+
+    footer {
       width: 100%;
       text-align: center;
       font-size: 13px;
       color: #fff;
-      background: #00416A;
+      background: rgba(0,0,0,0.2);
       padding: 15px 10px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: auto;
+      position: fixed;
+      bottom: 0;
+      z-index: 3;
+      backdrop-filter: blur(10px);
     }
 
     footer span {
       color: #ffffff;
       font-weight: 600;
     }
-    .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 30px;
-  max-width: 1200px;
-  margin: auto;
-  z-index: 2;
-  position: relative;
-}
-  .logo-con-brillo {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  max-height: 120px;
-}
 
-.logo-con-brillo img {
-  display: block;
-  max-height: 120px;
-  height: auto;
-  z-index: 1;
-}
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
 
-.destello {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.2) 100%);
-  transform: skewX(-20deg);
-  animation: shine 3s ease-in-out infinite;
-  z-index: 2;
-}
+      .menu-grid {
+        padding: 15px;
+      }
 
-@keyframes shine {
-  0% { left: -75%; }
-  100% { left: 125%; }
-}
-
+      .card a {
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <img src="logo_proveedora.webp" class="marca-agua" alt="Marca de agua" loading="lazy" />
+
+  <!-- Marca de agua con cristal y brillo -->
+  <div class="marca-agua" aria-hidden="true">
+    <div class="fondo-cristal"></div>
+    <img src="logo_proveedora.webp" class="logo-visible" alt="Marca de agua">
+    <div class="shine"></div>
+  </div>
+
+  <!-- Header -->
   <header>
-    <div class="logo-con-brillo">
-  <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
-  <div class="destello"></div>
-</div>
+    <img src="logo_proveedora.webp" alt="Logo La Proveedora">
     <h1>Panel de Herramientas</h1>
     <div class="top-buttons">
       <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
@@ -300,17 +319,16 @@
     <p>Buscar productos y detalles</p>
   </div>
 </div>
-   <script>
+     <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
     }
+
     function cerrarSesion() {
       alert("Sesión cerrada correctamente.");
       window.close();
     }
   </script>
-    <footer>
-    © 2025 <span>Panel de Herramientas La Proveedora</span> · Desarrollado por Lizandro Sustaita
-  </footer>
+
 </body>
 </html>
