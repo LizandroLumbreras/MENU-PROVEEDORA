@@ -146,13 +146,47 @@
   z-index: 2;
   position: relative;
 }
+  .logo-con-brillo {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  max-height: 120px;
+}
+
+.logo-con-brillo img {
+  display: block;
+  max-height: 120px;
+  height: auto;
+  z-index: 1;
+}
+
+.destello {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.2) 100%);
+  transform: skewX(-20deg);
+  animation: shine 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
 
   </style>
 </head>
 <body>
   <img src="logo_proveedora.webp" class="marca-agua" alt="Marca de agua" loading="lazy" />
   <header>
-    <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
+    <div class="logo-con-brillo">
+  <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
+  <div class="destello"></div>
+</div>
     <h1>Panel de Herramientas</h1>
     <div class="top-buttons">
       <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
