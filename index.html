@@ -178,21 +178,11 @@
   animation: shine 3s ease-in-out infinite;
   pointer-events: none;
 }
-
-@keyframes shine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-    .marca-agua-con-brillo {
+.marca-agua-con-brillo {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.07;
   z-index: 0;
   pointer-events: none;
   max-width: 80%;
@@ -214,13 +204,22 @@
   );
   transform: skewX(-25deg);
   animation: shine 4s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .marca-agua {
   width: 100%;
   height: auto;
   display: block;
+  opacity: 0.07;
 }
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
   </style>
 </head>
 <body>
