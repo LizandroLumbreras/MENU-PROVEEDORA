@@ -187,11 +187,46 @@
     left: 100%;
   }
 }
+    .marca-agua-con-brillo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+  max-width: 80%;
+  overflow: hidden;
+}
 
+.marca-agua-con-brillo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 4s ease-in-out infinite;
+}
+
+.marca-agua {
+  width: 100%;
+  height: auto;
+  display: block;
+}
   </style>
 </head>
 <body>
+  <div class="marca-agua-con-brillo">
   <img src="logo_proveedora.webp" class="marca-agua" alt="Marca de agua" loading="lazy" />
+</div>
   <header>
     <div class="logo-con-brillo">
   <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
