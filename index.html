@@ -146,89 +146,46 @@
   z-index: 2;
   position: relative;
 }
- .logo-con-brillo {
+  .logo-con-brillo {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  max-width: 250px;
-  width: 100%;
+  max-height: 120px;
 }
 
 .logo-con-brillo img {
   display: block;
-  width: 100%;
+  max-height: 120px;
   height: auto;
-}
-
-/* Efecto de brillo como pseudo-elemento */
-.logo-con-brillo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  animation: shine 3s ease-in-out infinite;
-  pointer-events: none;
-}
-.marca-agua-con-brillo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  pointer-events: none;
-  max-width: 80%;
-  overflow: hidden;
-}
-
-.marca-agua-con-brillo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  animation: shine 4s ease-in-out infinite;
   z-index: 1;
-  pointer-events: none;
 }
 
-.marca-agua {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.07;
+.destello {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.2) 100%);
+  transform: skewX(-20deg);
+  animation: shine 3s ease-in-out infinite;
+  z-index: 2;
 }
 
 @keyframes shine {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% { left: -75%; }
+  100% { left: 125%; }
 }
 
   </style>
 </head>
 <body>
-  <div class="marca-agua-con-brillo">
   <img src="logo_proveedora.webp" class="marca-agua" alt="Marca de agua" loading="lazy" />
-</div>
   <header>
     <div class="logo-con-brillo">
   <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
+  <div class="destello"></div>
 </div>
     <h1>Panel de Herramientas</h1>
     <div class="top-buttons">
