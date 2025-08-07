@@ -136,6 +136,17 @@
       color: #ffffff;
       font-weight: 600;
     }
+    .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+  z-index: 2;
+  position: relative;
+}
+
   </style>
 </head>
 <body>
@@ -148,122 +159,113 @@
       <button class="logout-btn" onclick="cerrarSesion()">⏻ Cerrar Sesión</button>
     </div>
   </header>
-  <div id="menu" class="menu"> 
- <!-- CLIENTES -->
-<section>
+ <div class="menu-grid">
+  <!-- CLIENTES -->
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/FORMULARIO--CIENTES-PROVTEC25/" target="_blank" rel="noopener">📝 Formulario de Clientes</a>
+    <a href="https://lizandrolumbreras.github.io/FORMULARIO--CIENTES-PROVTEC25/" target="_blank">📝 Formulario de Clientes</a>
     <p>Formato de clientes</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/" target="_blank" rel="noopener">📋 Ver Clientes</a>
+    <a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/" target="_blank">📋 Ver Clientes</a>
     <p>Consultar y editar información</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/" target="_blank" rel="noopener">📝 Agregar Clientes</a>
+    <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/" target="_blank">📝 Agregar Clientes</a>
     <p>Registro rápido de nuevos clientes</p>
   </div>
-</section>
 
-<!-- CIGARRO -->
-<section>
+  <!-- CIGARRO -->
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/" target="_blank" rel="noopener">🧭 Control Cigarro</a>
+    <a href="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/" target="_blank">🧭 Control Cigarro</a>
     <p>Panel principal</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank" rel="noopener">📦 Inventario</a>
+    <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank">📦 Inventario</a>
     <p>Inventario físico</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/" target="_blank" rel="noopener">📥 Entradas</a>
+    <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/" target="_blank">📥 Entradas</a>
     <p>Registro de entradas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/" target="_blank" rel="noopener">📤 Salidas</a>
+    <a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/" target="_blank">📤 Salidas</a>
     <p>Registro de salidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/" target="_blank" rel="noopener">📊 Stock Teórico</a>
+    <a href="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/" target="_blank">📊 Stock Teórico</a>
     <p>Entradas y salidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/" target="_blank" rel="noopener">📡 Monitoreo</a>
+    <a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/" target="_blank">📡 Monitoreo</a>
     <p>Entradas y salidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/" target="_blank" rel="noopener">📑 Existencia</a>
+    <a href="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/" target="_blank">📑 Existencia</a>
     <p>Inventario actual</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/" target="_blank" rel="noopener">🧾 Reimpresión</a>
+    <a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/" target="_blank">🧾 Reimpresión</a>
     <p>Tickets de salidas</p>
   </div>
-</section>
 
-<!-- ZAPATA -->
-<section>
+  <!-- ZAPATA -->
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/Entrada-Zapata/" target="_blank" rel="noopener">📥 Entrada</a>
+    <a href="https://lizandrolumbreras.github.io/Entrada-Zapata/" target="_blank">📥 Entrada</a>
     <p>Entradas normales</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/ENTRADA-POR-AJUSTE-ZAPATA/" target="_blank" rel="noopener">🛠️ Entrada por Ajuste</a>
+    <a href="https://lizandrolumbreras.github.io/ENTRADA-POR-AJUSTE-ZAPATA/" target="_blank">🛠️ Entrada por Ajuste</a>
     <p>Ajustes manuales</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/" target="_blank" rel="noopener">📤 Salida</a>
+    <a href="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/" target="_blank">📤 Salida</a>
     <p>Registro de salidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/" target="_blank" rel="noopener">📦 Inventario</a>
+    <a href="https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/" target="_blank">📦 Inventario</a>
     <p>Stock actual</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/Monitoreo-Zapata/" target="_blank" rel="noopener">📡 Monitoreo</a>
+    <a href="https://lizandrolumbreras.github.io/Monitoreo-Zapata/" target="_blank">📡 Monitoreo</a>
     <p>Entradas y salidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/" target="_blank" rel="noopener">➕ Agregar Productos</a>
+    <a href="https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/" target="_blank">➕ Agregar Productos</a>
     <p>Nuevos códigos</p>
   </div>
-</section>
 
-<!-- MERMA -->
-<section>
+  <!-- MERMA -->
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/MERMA-COSTEO/" target="_blank" rel="noopener">💸 Costeo Merma</a>
+    <a href="https://lizandrolumbreras.github.io/MERMA-COSTEO/" target="_blank">💸 Costeo Merma</a>
     <p>Captura de pérdidas</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/MONITOREO-MERMA/" target="_blank" rel="noopener">📈 Monitoreo Merma</a>
+    <a href="https://lizandrolumbreras.github.io/MONITOREO-MERMA/" target="_blank">📈 Monitoreo Merma</a>
     <p>Historial agrupado</p>
   </div>
-  <!-- Agrega esto al final de las secciones, justo antes del <script> -->
-<!-- NUEVOS LINKS SOLICITADOS -->
-<section>
+
+  <!-- EXTRAS -->
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/COLECCION-DULCES-INVENTARIO/" target="_blank" rel="noopener">📦 Colección Dulces Inventario</a>
+    <a href="https://lizandrolumbreras.github.io/COLECCION-DULCES-INVENTARIO/" target="_blank">📦 Colección Dulces Inventario</a>
     <p>Inventario general de dulces</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/" target="_blank" rel="noopener">📡 Monitoreo Z-C-M</a>
+    <a href="https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/" target="_blank">📡 Monitoreo Z-C-M</a>
     <p>Vista de movimientos Z-C-M</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/" target="_blank" rel="noopener">🛠️ Menú Ingeniero Monitoreo</a>
+    <a href="https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/" target="_blank">🛠️ Menú Ingeniero Monitoreo</a>
     <p>Panel especial para ingenieros</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/AJUSTE-ZAPATA-NUEVO/" target="_blank" rel="noopener">⚙️ Ajuste Zapata Nuevo</a>
+    <a href="https://lizandrolumbreras.github.io/AJUSTE-ZAPATA-NUEVO/" target="_blank">⚙️ Ajuste Zapata Nuevo</a>
     <p>Versión actualizada del ajuste</p>
   </div>
   <div class="card">
-    <a href="https://lizandrolumbreras.github.io/consulta-productos/" target="_blank" rel="noopener">🔍 Consulta de Productos</a>
+    <a href="https://lizandrolumbreras.github.io/consulta-productos/" target="_blank">🔍 Consulta de Productos</a>
     <p>Buscar productos y detalles</p>
   </div>
-</section>
-
+</div>
    <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
