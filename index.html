@@ -149,34 +149,43 @@
  .logo-con-brillo {
   position: relative;
   display: inline-block;
-  overflow: hidden; /* 🔐 Recorta el destello al tamaño del contenedor */
-  max-height: 120px;
-  width: auto;
+  overflow: hidden;
+  max-width: 250px;
+  width: 100%;
 }
 
 .logo-con-brillo img {
   display: block;
-  max-height: 150px;
-  width: auto;
+  width: 100%;
   height: auto;
-  z-index: 1;
 }
 
-.destello {
+/* Efecto de brillo como pseudo-elemento */
+.logo-con-brillo::before {
+  content: "";
   position: absolute;
   top: 0;
-  left: -75%;
-  width: 50%;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.0) 100%);
-  transform: skewX(-20deg);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
   animation: shine 3s ease-in-out infinite;
-  z-index: 2;
   pointer-events: none;
 }
+
 @keyframes shine {
-  0% { left: -75%; }
-  100% { left: 125%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
   </style>
@@ -186,7 +195,6 @@
   <header>
     <div class="logo-con-brillo">
   <img src="logo_proveedora.webp" alt="Logo La Proveedora" loading="lazy">
-  <div class="destello"></div>
 </div>
     <h1>Panel de Herramientas</h1>
     <div class="top-buttons">
