@@ -14,11 +14,7 @@
       --card-bg: rgba(255, 255, 255, 0.05);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -32,43 +28,23 @@
 
     /* Marca de agua con cristal y brillo */
     .marca-agua {
-      position: fixed;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      z-index: 0;
-      pointer-events: none;
+      position: fixed; inset: 0; display: grid; place-items: center;
+      z-index: 0; pointer-events: none;
     }
-
     .fondo-cristal {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(8px) saturate(130%) contrast(110%);
       -webkit-backdrop-filter: blur(8px) saturate(130%) contrast(110%);
     }
-
-    .logo-visible {
-      max-width: 1000px;
-      opacity: 0.15;
-      z-index: 1;
-    }
-
+    .logo-visible { max-width: 1000px; opacity: 0.15; z-index: 1; }
     .shine {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg,
-        transparent 0%,
-        rgba(255,255,255, 0.2) 40%,
-        rgba(255,255,255, 0.6) 50%,
-        rgba(255,255,255, 0.2) 60%,
-        transparent 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.2) 40%, rgba(255,255,255,.6) 50%, rgba(255,255,255,.2) 60%, transparent 100%);
       transform: translateX(-120%) skewX(-12deg);
       animation: shine-move 6s ease-in-out infinite;
-      filter: blur(1px);
-      z-index: 2;
+      filter: blur(1px); z-index: 2;
     }
-
     @keyframes shine-move {
       0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
       8% { opacity: 1; }
@@ -78,21 +54,31 @@
     }
 
     h1 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 30px;
-      z-index: 2;
-      position: relative;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      text-align: center; font-size: 32px; margin-bottom: 10px;
+      z-index: 2; position: relative; text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
     }
 
+    /* Título de sección */
+    .seccion-titulo {
+      max-width: 1200px;
+      margin: 22px auto 8px;
+      padding: 8px 14px;
+      font-size: 18px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.08);
+      border-left: 4px solid var(--principal);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Grid reutilizable por sección */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 20px;
+      padding: 12px 20px 20px;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       z-index: 2;
       position: relative;
     }
@@ -107,56 +93,24 @@
       box-shadow: 0 6px 16px var(--sombra);
       transition: transform 0.2s, background 0.3s ease;
     }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background-color: rgba(255, 255, 255, 0.10);
-    }
-
+    .card:hover { transform: translateY(-5px); background-color: rgba(255,255,255,0.10); }
     .card a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      display: block;
-      margin-bottom: 6px;
+      text-decoration: none; color: white; font-weight: bold; font-size: 16px;
+      display: block; margin-bottom: 6px;
     }
-
-    .card p {
-      font-size: 13px;
-      color: #f0f0f0;
-    }
+    .card p { font-size: 13px; color: #f0f0f0; }
 
     footer {
-      width: 100%;
-      text-align: center;
-      font-size: 13px;
-      color: #fff;
-      background: rgba(0,0,0,0.2);
-      padding: 15px 10px;
-      position: fixed;
-      bottom: 0;
-      z-index: 3;
+      width: 100%; text-align: center; font-size: 13px; color: #fff;
+      background: rgba(0,0,0,0.2); padding: 15px 10px; position: fixed; bottom: 0; z-index: 3;
       backdrop-filter: blur(10px);
     }
-
-    footer span {
-      color: #ffffff;
-      font-weight: 600;
-    }
+    footer span { color: #ffffff; font-weight: 600; }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 22px;
-      }
-
-      .menu-grid {
-        padding: 15px;
-      }
-
-      .card a {
-        font-size: 15px;
-      }
+      h1 { font-size: 22px; }
+      .menu-grid { padding: 10px 15px 18px; gap: 14px; }
+      .card a { font-size: 15px; }
     }
   </style>
 </head>
@@ -172,9 +126,13 @@
   <!-- Título principal -->
   <h1>Panel de Herramientas</h1>
 
-  <!-- Grid de tarjetas -->
+  <!-- ===================== CLIENTES ===================== -->
+  <div class="seccion-titulo">👥 Clientes</div>
   <div class="menu-grid">
-    <!-- CLIENTES -->
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/" target="_blank">📝 Agregar Clientes</a>
+      <p>Registro rápido de nuevos clientes</p>
+    </div>
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/FORMULARIO--CIENTES-PROVTEC25/" target="_blank">📝 Formulario de Clientes</a>
       <p>Formato de clientes</p>
@@ -183,23 +141,34 @@
       <a href="https://lizandrolumbreras.github.io/LISTA-CLIENTES-PROVEEDORA/" target="_blank">📋 Ver Clientes</a>
       <p>Consultar y editar información</p>
     </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/ALTA-CLIENTES-PROVEEDORA/" target="_blank">📝 Agregar Clientes</a>
-      <p>Registro rápido de nuevos clientes</p>
-    </div>
+  </div>
 
-    <!-- CIGARRO -->
+  <!-- ===================== CIGARRO ===================== -->
+  <div class="seccion-titulo">🚬 Cigarro</div>
+  <div class="menu-grid">
     <div class="card">
-      <a href="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/" target="_blank">🧭 Menu Control Cigarro</a>
-      <p>Panel principal</p>
+      <a href="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/" target="_blank">📑 Existencia productos</a>
+      <p>Inventario actual</p>
+    </div>
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/" target="_blank">📥 Entradas almacen</a>
+      <p>Registro de entradas</p>
     </div>
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/" target="_blank">📦 Formato Inventario</a>
       <p>Inventario físico</p>
     </div>
     <div class="card">
-      <a href="https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/" target="_blank">📥 Entradas almacen</a>
-      <p>Registro de entradas</p>
+      <a href="https://lizandrolumbreras.github.io/CONTROL-CIGARRO/" target="_blank">🧭 Menu Control Cigarro</a>
+      <p>Panel principal</p>
+    </div>
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/" target="_blank">📡 Monitoreo tarjetas</a>
+      <p>Entradas y salidas</p>
+    </div>
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/" target="_blank">🧾 Reimpresión tickets cigarro</a>
+      <p>Tickets de salidas</p>
     </div>
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/" target="_blank">📤 Salidas almacen</a>
@@ -209,20 +178,15 @@
       <a href="https://lizandrolumbreras.github.io/SROCK-CIGARRO-ENTRADAS-SALIDAS/" target="_blank">📊 Stock Teórico</a>
       <p>Entradas y salidas</p>
     </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/" target="_blank">📡 Monitoreo tarjetas</a>
-      <p>Entradas y salidas</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/" target="_blank">📑 Existencia productos</a>
-      <p>Inventario actual</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/reeimpresion-tickets-cigarro-salidas/" target="_blank">🧾 Reimpresión tickets cigarro</a>
-      <p>Tickets de salidas</p>
-    </div>
+  </div>
 
-    <!-- ZAPATA -->
+  <!-- ===================== ZAPATA ===================== -->
+  <div class="seccion-titulo">🏭 Zapata</div>
+  <div class="menu-grid">
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/" target="_blank">➕ Agregar Productos Articulos</a>
+      <p>Nuevos códigos</p>
+    </div>
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/Entrada-Zapata/" target="_blank">📥 Entrada almacen Zapata</a>
       <p>Entradas normales</p>
@@ -230,10 +194,6 @@
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/ENTRADA-POR-AJUSTE-ZAPATA/" target="_blank">🛠️ Entrada por Ajuste Zapata</a>
       <p>Ajustes manuales</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/" target="_blank">📤 Salida Almacen Zapata</a>
-      <p>Registro de salidas</p>
     </div>
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/" target="_blank">📦 Inventario Zapata</a>
@@ -244,11 +204,14 @@
       <p>Entradas y salidas</p>
     </div>
     <div class="card">
-      <a href="https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/" target="_blank">➕ Agregar Productos Articulos</a>
-      <p>Nuevos códigos</p>
+      <a href="https://lizandrolumbreras.github.io/SALIDA-ZAPATA/" target="_blank">📤 Salida Almacen Zapata</a>
+      <p>Registro de salidas</p>
     </div>
+  </div>
 
-    <!-- MERMA -->
+  <!-- ===================== MERMA ===================== -->
+  <div class="seccion-titulo">📉 Merma</div>
+  <div class="menu-grid">
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/MERMA-COSTEO/" target="_blank">💸 Costeo Merma</a>
       <p>Captura de pérdidas</p>
@@ -257,35 +220,32 @@
       <a href="https://lizandrolumbreras.github.io/MONITOREO-MERMA/" target="_blank">📈 Monitoreo Merma</a>
       <p>Historial agrupado</p>
     </div>
+  </div>
 
-    <!-- DULCES -->
+  <!-- ===================== DULCES ===================== -->
+  <div class="seccion-titulo">🍬 Dulces</div>
+  <div class="menu-grid">
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/COLECCION-DULCES-INVENTARIO/" target="_blank">📦 Colección Dulces Inventario</a>
       <p>Inventario general de dulces</p>
     </div>
     <div class="card">
-      <a href="https://lizandrolumbreras.github.io/SALIDA-ALMACENDULCES/" target="_blank">🧺 Salida Dulces</a>
-      <p>Buscar productos y dar salidas</p>
+      <a href="https://lizandrolumbreras.github.io/INVENTARIO-DULCES/" target="_blank">🍬 Inventario Dulces</a>
+      <p>Existencias de dulces</p>
     </div>
-    <!-- NUEVAS TARJETAS SOLICITADAS -->
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/Modificar-Dulces-Categoria/" target="_blank">🏷️ Modificar Dulces por Categoría</a>
       <p>Editar o reclasificar categorías</p>
     </div>
     <div class="card">
-      <a href="https://lizandrolumbreras.github.io/INVENTARIO-DULCES/" target="_blank">🍬 Inventario Dulces</a>
-      <p>Existencias de dulces</p>
+      <a href="https://lizandrolumbreras.github.io/SALIDA-ALMACENDULCES/" target="_blank">🧺 Salida Dulces</a>
+      <p>Buscar productos y dar salidas</p>
     </div>
+  </div>
 
-    <!-- EXTRAS -->
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/" target="_blank">📡 Monitoreo Z-C-M</a>
-      <p>Vista de movimientos Z-C-M</p>
-    </div>
-    <div class="card">
-      <a href="https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/" target="_blank">🛠️ Menú Ingeniero Monitoreo</a>
-      <p>Panel especial para ingenieros</p>
-    </div>
+  <!-- ===================== EXTRAS ===================== -->
+  <div class="seccion-titulo">🧰 Extras</div>
+  <div class="menu-grid">
     <div class="card">
       <a href="https://lizandrolumbreras.github.io/AJUSTE-ZAPATA-NUEVO/" target="_blank">⚙️ Ajuste Zapata Nuevo</a>
       <p>Versión actualizada del ajuste</p>
@@ -294,11 +254,18 @@
       <a href="https://lizandrolumbreras.github.io/consulta-productos/" target="_blank">🔍 Consulta de Productos</a>
       <p>Buscar productos y detalles</p>
     </div>
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/" target="_blank">🛠️ Menú Ingeniero Monitoreo</a>
+      <p>Panel especial para ingenieros</p>
+    </div>
+    <div class="card">
+      <a href="https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/" target="_blank">📡 Monitoreo Z-C-M</a>
+      <p>Vista de movimientos Z-C-M</p>
+    </div>
   </div>
 
   <footer>
     © 2025 <span>Panel de Herramientas La Proveedora</span> · Desarrollado por Lizandro Sustaita®
   </footer>
-
 </body>
 </html>
