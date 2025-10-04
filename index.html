@@ -10,16 +10,18 @@
     :root {
       --azul: #00416A;
       --gris: #E4E5E6;
-      --blanco: #fff;
-      --sombra: 0 6px 18px rgba(0, 0, 0, 0.15);
-      --radio: 16px;
+      --blanco: #ffffff;
+      --sombra: 0 8px 24px rgba(0, 0, 0, 0.2);
+      --radio: 18px;
       --transicion: 0.3s ease;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, var(--azul), var(--gris));
@@ -29,69 +31,109 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
       position: relative;
-      z-index: 2;
     }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    .menu-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 90%;
-      max-width: 1100px;
-      padding-bottom: 60px;
-      z-index: 2;
-    }
-    .menu-button {
-      background: var(--blanco);
-      color: var(--azul);
-      border: none;
-      border-radius: var(--radio);
-      padding: 18px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: var(--sombra);
-      transition: transform var(--transicion), box-shadow var(--transicion), background var(--transicion), color var(--transicion);
-      text-align: center;
-    }
-    .menu-button:hover {
-      background: var(--azul);
-      color: var(--blanco);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    }
+
+    /* Marca de agua */
     .marca-agua {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.06;
-      max-width: 75%;
-      pointer-events: none;
+      opacity: 0.08;
+      width: 70%;
+      max-width: 600px;
       z-index: 0;
+      pointer-events: none;
     }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 25px 0;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .menu-button {
+      background: var(--blanco);
+      color: var(--azul);
+      border: none;
+      border-radius: var(--radio);
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: var(--sombra);
+      transition: all var(--transicion);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .menu-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .menu-button:hover {
+      background: var(--azul);
+      color: var(--blanco);
+      transform: translateY(-4px);
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
     }
+
     @media (max-width: 480px) {
       header h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+      }
+      section {
+        padding: 20px 15px;
       }
       .menu-button {
         font-size: 14px;
-        padding: 14px;
       }
     }
   </style>
@@ -103,40 +145,95 @@
     <h1>Menú Principal – Monitoreo</h1>
   </header>
 
-  <div class="menu-container">
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/PUNTO-DE-VENTA-RUTA/'">Punto de Venta Ruta</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-ZAPATA/'">Salidas Zapata</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/'">Monitoreo Z-C-M</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/APP-ANUAL-INVENTARIO/'">App Anual Inventario</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/APP-ANUAL-INVENTARIO-B41/'">Inventario B41</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/bd-bodega41/'">Base Bodega 41</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/RUTAS-DE-VENTA-ALMACENES/'">Rutas de Venta Almacenes</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/REPORTES-INVENTARIO-ANUAL/'">Reportes Inventario Anual</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/VISOR-PEDIDOS-PDD/'">Visor Pedidos PDD</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/PEDIDOS-PROVEEDORA/'">Pedidos Proveedora</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/'">Inventario Cigarro</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/'">Existencia Almacén Cigarro</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/'">Salidas Cigarro 25</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/INVENTARIOS-ANUALES-USUARIOS/'">Inventarios Anuales Usuarios</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-ALMACENDULCES/'">Salidas Almacén Dulces</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/'">Agregar Productos</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-SALIDAS-DULCES/'">Monitoreo Salidas Dulces</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/'">Cigarro Gibran Provtec25</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/'">Menú Ingeniero Monitoreo</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/'">Monitoreo Cigarro E/S</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/AJUSTE-ZAPATA-NUEVO/'">Ajuste Zapata Nuevo</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/'">Inventario Zapata</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Catalago-productos-PDD/'">Catálogo Productos PDD</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MERMA-COSTEO/'">Merma Costeo</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-INVENTARIOS-ANUALES/'">Monitoreo Inventarios Anuales</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Modificar-Dulces-Categoria/'">Modificar Dulces Categoría</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Monitoreo-Zapata/'">Monitoreo Zapata</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-MERMA/'">Monitoreo Merma</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-FACTURAS-ROBERTO/'">Menú Facturas Roberto</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Entrada-Zapata/'">Entrada Zapata</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-MONITOREO/'">Menú Monitoreo</button>
-    <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CAPTURA-INVENTARIO-ZAPATA/'">Captura Inventario Zapata</button>
-  </div>
+  <!-- INVENTARIOS -->
+  <section>
+    <h2>📦 Inventarios</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/APP-ANUAL-INVENTARIO/'">
+        📊 App Anual Inventario
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/APP-ANUAL-INVENTARIO-B41/'">
+        🏢 Inventario B41
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/bd-bodega41/'">
+        🗄️ Base Bodega 41
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/REPORTES-INVENTARIO-ANUAL/'">
+        📑 Reportes Inventario Anual
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/INVENTARIOS-ANUALES-USUARIOS/'">
+        👥 Inventarios Anuales Usuarios
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/INVENTARIO-ZAPATA/'">
+        🧾 Inventario Zapata
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CAPTURA-INVENTARIO-ZAPATA/'">
+        🖊️ Captura Inventario Zapata
+      </button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-INVENTARIOS-ANUALES/'">
+        🔍 Monitoreo Inventarios Anuales
+      </button>
+    </div>
+  </section>
+
+  <!-- MONITOREO -->
+  <section>
+    <h2>📡 Monitoreo</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-Z-C-M/'">📋 Monitoreo Z-C-M</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-MERMA/'">⚙️ Monitoreo Merma</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-SALIDAS-DULCES/'">🍬 Monitoreo Salidas Dulces</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MONITOREO-CIGARRO-E-S/'">🚬 Monitoreo Cigarro E/S</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-MONITOREO/'">🧭 Menú Monitoreo</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-INGENIERO-MONITOREO/'">🛠️ Menú Ingeniero</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Monitoreo-Zapata/'">📈 Monitoreo Zapata</button>
+    </div>
+  </section>
+
+  <!-- SALIDAS -->
+  <section>
+    <h2>🚚 Salidas y Ajustes</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-ZAPATA/'">📦 Salidas Zapata</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-CIGARRO25/'">🚬 Salidas Cigarro 25</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/SALIDA-ALMACENDULCES/'">🍭 Salidas Almacén Dulces</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/AJUSTE-ZAPATA-NUEVO/'">⚖️ Ajuste Zapata Nuevo</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Entrada-Zapata/'">⬆️ Entrada Zapata</button>
+    </div>
+  </section>
+
+  <!-- PEDIDOS -->
+  <section>
+    <h2>🧾 Pedidos y Ventas</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/PUNTO-DE-VENTA-RUTA/'">🛒 Punto de Venta Ruta</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/RUTAS-DE-VENTA-ALMACENES/'">🚚 Rutas de Venta Almacenes</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/VISOR-PEDIDOS-PDD/'">👁️ Visor Pedidos PDD</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/PEDIDOS-PROVEEDORA/'">📦 Pedidos Proveedora</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MENU-FACTURAS-ROBERTO/'">💼 Menú Facturas Roberto</button>
+    </div>
+  </section>
+
+  <!-- CIGARROS -->
+  <section>
+    <h2>🚬 Cigarros</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CIGARRO-INVENTARIO/'">📋 Inventario Cigarro</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/EXISTENCIA-ALMACEN-CIGARRO/'">🏪 Existencia Almacén Cigarro</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/CIGARRO-GIBRAN-PROVTEC25/'">👤 Cigarro Gibran Provtec25</button>
+    </div>
+  </section>
+
+  <!-- CATÁLOGOS -->
+  <section>
+    <h2>🗂️ Catálogos y Costeos</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/AGREGAR-PRODUCTOS/'">➕ Agregar Productos</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Catalago-productos-PDD/'">📚 Catálogo Productos PDD</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/MERMA-COSTEO/'">💲 Merma Costeo</button>
+      <button class="menu-button" onclick="location.href='https://lizandrolumbreras.github.io/Modificar-Dulces-Categoria/'">🍬 Modificar Dulces Categoría</button>
+    </div>
+  </section>
 
   <footer>© 2025 La Proveedora | Sistema de Monitoreo</footer>
 
